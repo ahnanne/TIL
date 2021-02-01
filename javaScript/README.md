@@ -1,4 +1,10 @@
 # JavaScript
+#### 참고문헌
+
+![book](http://image.kyobobook.co.kr/images/book/xlarge/239/x9791158392239.jpg)
+
+###### 이웅모 (2020). 모던 자바스크립트 Deep Dive. 위키북스
+
 ## 📌목차
 ###### 각 항목 클릭하여 바로가기
 <details>
