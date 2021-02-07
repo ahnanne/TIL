@@ -121,9 +121,172 @@ ___
 ___
 ### WAI-ARIA
 
-- 
+##### 참고 : [레진 WAI-ARIA 가이드라인에 대한 소개](https://tech.lezhin.com/2018/04/20/wai-aria)
+
+- WAI-ARIA란?
+
+  - WAI(Web Accessibility Initiative) : W3C에서 웹 접근성을 담당하는 조직
+
+  - ARIA : RIA(Rich Internet Application) 기술에 대한 접근성 명세를 의미함. 즉 새로운 기술에 대응하는 접근성 명세라고 할 수 있음.
+
+  - 웹 페이지를 구조화할 때도 다음과 같이 WAI-ARIA 기법을 사용하여 각 `<div>`의 역할을 구분지어줄 수도 있음.
+
+    ```html
+    <div role="banner">
+
+    <!--페이지의 시작 부분에 오는 콘텐츠-->
+    <!--header 태그와 동일한 의미-->
+    ```
+
+    - 하지만 굳이 이렇게 하는 것보단 HTML5의 시맨틱 태그들을 이용하는 것이 더 효율적임.
+
+    - 전체 구조를 건드리지 않고 유지보수해야 하는 상황에서는 이와 같은 방법을 쓰기도 함.
+
+  - role 어트리뷰트
+
+    - role 어트리뷰트는 웹 접근성 차원에서 위젯, 구조 및 동작에 대한 정보를 올바르고 명확하게 전달하기 위해 등장했음.
+
+      - role 어트리뷰트의 다양한 값들 : [클릭!](https://happycording.tistory.com/entry/HTML-Role-왜-사용해야만-하는가)
+  
+    - 예를 들어, a 태그를 button 태그처럼 사용하는 경우에는 아래와 같이 role 어트리뷰트를 사용하여 버튼임을 표시할 수 있음.
+
+      ```html
+      <a role="button">
+      ```
+
+  - 이 외에도 WAI-ARIA에 대해선 매 수업 시간마다 언급되었던 내용을 바탕으로 조금씩 정리해나갈 예정임.
 
 ___
 ### 실습
 
-- 
+- 설계
+
+  - 코드를 짜기 전에는 늘 설계✨를 먼저 해야 함.
+
+  - 웹 접근성에 대한 고려
+
+    - 웹 접근성을 위해 markup 단에서 신경써야 하는 부분이 많음.
+
+      - 대표적인 예로 skip navigation 기능을 첫 머리에 달아놓아야 함.
+
+    - WCAG 2.1(웹 접근성 지침) by W3C : 직전 표준인 WCAG 2.0에서는 데스크톱 환경 위주의 웹 접근성을 다루었다면, 2.1 표준에서는 스마트폰, 태블릿과 같은 모바일 환경에서의 웹 접근성을 다루고 있음.
+
+  - 마크업 과정
+
+    >1. 구조 고민
+    >
+    >2. 논리적 순서 고민
+    >
+    >3. 시맨틱 마크업 고민
+    >
+    >4. 네이밍 고민
+    >
+    ><i>※ 마크업 과정에선 디자인에 대한 고민은 잠시 접어두자.</i>
+
+    1. 구조
+
+      - 3단 vs 4단
+
+        ![3단 구조와 4단 구조 비교](https://github.com/ahnanne/TIL/blob/main/html/img/01-mark-up1.png?raw=true)
+
+        - 각 영역의 <b>배치</b>를 변경하고 싶을 경우 HTML의 구조를 변경하지 말고 CSS를 이용하면 됨.
+
+        - 실습에서는 3단 구조를 선택했음.
+
+    2. 논리적 순서
+
+      - 구조를 짤 때는 늘 논리적인 순서를 고민해야 함.
+
+      - 논리적인 순서대로 마크업을 하고, 배치 등의 디자인은 CSS로 하면 됨.
+
+      - 레이아웃을 마크업할 땐 더 이상 table 요소를 이용하지 않음. table 요소는 단순히 데이터를 보여주기 위한 마크업이며, 배치하기 위한 용도로 쓰이면 안됨.
+
+      - <b>서로 독립적인 콘텐츠</b>들일 경우, 논리적 순서는 위에서 아래로, 왼쪽에서 오른쪽으로 가는 순서로 구성해도 됨.
+
+    3. 시맨틱 마크업
+
+      - 시맨틱 마크업이란, 기계가 처리할 수 있고 동시에 사람도 이해할 수 있는 마크업을 의미함.
+
+    4. 네이밍
+
+      - 영어권의 trendy한 naming을 따를 것을 권장함.
+
+- 실습 구조(기본 골격) 짜기
+
+  ![실습 구조](https://github.com/ahnanne/TIL/blob/main/html/img/01-mark-up2.png?raw=true)
+
+  - multi class naming(멀티 클래스 네이밍)
+
+    - 하나의 요소에 여러 클래스를 부여하는 것
+
+    - 띄어쓰기로 구분
+
+  - main은 한 페이지에서 딱 한 번만 사용 가능!
+
+    - cf.) header, footer는 한 페이지 안에서도 여러번 사용 가능함.
+
+  - 메인페이지의 파일 이름은 index.html로 지음.
+
+    - root directory에 접근했을 때 가장 먼저 보여지도록 하기 위함.
+
+  - language code
+
+    ```html
+    <html lang="ko-KR">
+    ```
+
+    - primary code : `ko`(korean)
+
+    - subcode : `-KR`(Korea, Republic)
+
+  - title
+
+    - title 태그에는 핵심 키워드가 포함되어야 함.
+
+    - title은 접근성 및 SEO(Search Engine Optimization, 검색 엔진 최적화)와 관련있음.
+
+- CSS
+
+  - CSS의 3가지 주요 개념
+
+    - 겹침(cascade)
+
+    - 상속
+
+    - 우선순위
+
+  - 네이밍할 때는 id보다는 class명을 지어주는 것이 재사용 측면에서 용이함.
+
+    - 네이밍 방법론 : SMCSS, OOCSS, BEM
+
+- font
+
+  - font-family property [(MDN)](https://developer.mozilla.org/ko/docs/Web/CSS/font-family)
+
+    - `serif` vs `sans-serif` : 전자는 삐침이 있는 글씨체, 후자는 삐침이 없는 글씨체
+
+  - 한글 폰트
+
+    - 한글 폰트는 압축 용량이 크기 때문에 성능 이슈가 있을 수 있으므로, 너무 용량이 큰 것은 사용을 지양할 것
+
+    - 아시아권을 위해 제작된 폰트를 사용하는 것이 좋음.
+
+      - ex) Noto Sans, [Spoqa Han Sans](https://spoqa.github.io/spoqa-han-sans/ko-KR/)
+
+    - line-height 프로퍼티를 사용하는 경우, 영어권과 달리 한글의 경우 `line-height: 1;`로 설정하면 폰트에 따라 일부분이 짤려서 출력될 수도 있으므로 `line-height: 1.5;`로 지정하는 것을 권장
+
+  - font-weight 프로퍼티는 `bold` 등의 값을 주기 보다는 그냥 숫자로 지정하는 것이 좋음. (호환성 이슈)
+
+  - 브라우저에서 font 적용 여부 확인하는 방법
+
+    ![font 적용 여부 확인 스크린샷](https://github.com/ahnanne/TIL/blob/main/html/img/01-font.png?raw=true)
+
+    - 위 스크린샷과 같이, Status=200 뜨면 해당 글꼴이 정상적으로 적용되었음을 의미함.
+
+- [Normalize.css](https://necolas.github.io/normalize.css/)
+
+- vendor prefix
+
+  ![vendor prefix](https://github.com/ahnanne/TIL/blob/main/html/img/01-prefix.png?raw=true)
+
+- height 프로퍼티 값은 필수적으로 고정해야 하는 경우가 아니라면, 가급적이면 고정하지 않는 것이 좋음.
