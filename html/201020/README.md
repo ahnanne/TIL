@@ -16,6 +16,8 @@
   - default 값은 `content-box`이며, 이는 요소의 순수 너비(width, height)만으로 요소의 크기를 계산함. 즉, border의 굵기가 굵어질수록 요소의 전체적인 크기도 증가하게 됨. 이런 부분도 고려해서 너비를 지정해줘야 하기 때문에 직접 계산 방법이라고도 부름.
 
   - `border-box`는 이와 달리 요소의 너비를 계산할 때 padding과 border까지 포함하여 계산하기 때문에, 자동 계산 방법이라고도 부름.
+  
+    - 주의할 점 : `border-box`일 때는 width값과 height값을 아무리 작게 설정해도 요소의 전체 크기가 (padding×2) + (border×2)보다 작아지지 않음. [(참고)](https://codepen.io/ahnanne/pen/WNoxmrW)
 
   - `padding-box`는 브라우저 호환성이 떨어지므로 사용하지 않음.
 
