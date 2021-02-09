@@ -7,7 +7,7 @@
 
   ![content model](https://github.com/ahnanne/TIL/blob/main/html/img/01-content-model.png?raw=true)
   ##### 참고 1) https://html.spec.whatwg.org/multipage/dom.html#content-models
-  ##### 참고 2) https://developer.mozilla.org/ko/docs/Web/Guide/HTML/Content_categories#플로우_콘텐츠
+  ##### 참고 2) https://developer.mozilla.org/ko/docs/Web/Guide/HTML/Content_categories
 
   - Metadata content
 
