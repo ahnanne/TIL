@@ -24,7 +24,21 @@
 ___
 ### reflow & repaint
 
-- 
+- reflow
+
+  - reflow는 DOM node의 레이아웃 수치가 변경될 경우, 이로 인해 영향 받은 모든 node의 수치를 다시 계산(recalculate)하여 렌더 트리를 재생성하는 과정이다. (출처 : https://webclub.tistory.com/346)
+  
+  - 쉽게 말해, 컴퓨터 화면에서 node들이 차지하는 공간을 조정하는 것을 의미한다.
+  
+  - transform의 속성 중 translate과 같은 값은 reflow가 많이 발생하지 않음.
+  
+- repaint
+
+  - reflow 과정이 끝난 후 재생성된 렌더 트리를 다시 그리는 과정을 repaint라고 한다.
+  
+  - background-color, visibility, outline 등의 스타일 변경 시에는 레이아웃 수치가 변경되지 않으므로, reflow 과정은 생략되고 repaint 과정만 일어나게 된다.
+
+  - translate을 사용하면 브라우저가 gpu를 활용하는데, gpu는 repaint에서 압도적인 성능을 보인다. ➠ 성능 개선 !
 
 ___
 ### accessibility tree(접근성 트리)
