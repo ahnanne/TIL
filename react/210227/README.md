@@ -70,3 +70,18 @@ P.S. We know this message is long but please read the steps above :-) We hope yo
 
 ![image](https://user-images.githubusercontent.com/54733637/109408659-d47b3400-79ce-11eb-9848-d3332c0f58b2.png)
 ##### 해결!
+
+___
+### 실습
+
+- 컴포넌트는 두 가지 방법으로 만들 수 있음.
+
+  1. 함수 형태로 만들기
+
+  2. 클래스 형태로 만들기
+
+- 실습에서는 함수 형태로 만들기로 함.
+
+- JSX
+
+  - JSX는 자바스크립트를 확장한 언어로, 출력하고 싶은 HTML 구조를 그대로 작성하면 되므로 코드를 직관적으로 작성하고 파악할 수 있음.
