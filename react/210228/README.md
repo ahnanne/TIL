@@ -201,6 +201,7 @@ ___
       <div>
         <input
           name="name"
+          {/* input 요소의 name 어트리뷰트는 name/value pair(쌍)의 일부! */}
           placeholder="이름"
           onChange={onChange}
           value={name}
