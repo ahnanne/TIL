@@ -3,6 +3,9 @@
 
 - `props`
 
+  ![image](https://user-images.githubusercontent.com/54733637/109410972-f7631380-79e1-11eb-90e8-05b6068a7225.png)
+
+
   - `props`는 properties의 약어로, 컴포넌트를 사용할 때 특정 값을 전달하고 싶을 경우 사용하는 것
 
   - 사용 방법
