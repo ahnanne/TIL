@@ -9,4 +9,4 @@
 
 - [21/02/28 온라인 강의 내용](https://github.com/ahnanne/TIL/tree/main/react/210228)
 
-  - (키워드)
+  - `props`, `defaultProps`, `props.children`, 조건부 렌더링, `useState`
