@@ -67,4 +67,6 @@ P.S. We know this message is long but please read the steps above :-) We hope yo
     - 위 안내 내용 중 7번까지 확인해봤지만 해결되지 않음.
 
     - 7번 아래의 안내(`If nothing else helps, add SKIP_PREFLIGHT_CHECK=true to an .env file in your project.`)에 따라 프로젝트 루트 디렉토리에 `.env`라는 이름의 파일을 생성한 후 `SKIP_PREFLIGHT_CHECK=true`를 써놓고 저장함.
+
 ![image](https://user-images.githubusercontent.com/54733637/109408659-d47b3400-79ce-11eb-9848-d3332c0f58b2.png)
+##### 해결!
