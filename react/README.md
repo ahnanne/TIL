@@ -5,5 +5,8 @@
 
 - [21/02/27 온라인 강의 내용](https://github.com/ahnanne/TIL/tree/main/react/210227)
 
+  - 개발 환경 준비, JSX, `<noscript>`
+
+- [21/02/28 온라인 강의 내용](https://github.com/ahnanne/TIL/tree/main/react/210228)
+
   - (키워드)
-  
