@@ -86,6 +86,143 @@ ___
 ___
 ### useState를 통한 동적 상태 관리
 
-- 
+- 컴포넌트에서 이벤트 설정하기([참고](https://ko.reactjs.org/docs/handling-events.html))
 
+  ```jsx
+  function Counter() {
+    const [number, setNumber] = useState(0);
+  // 배열 디스트럭처링 할당
+  // 💜 number: 상태
+  // 💜 setNumber: number라는 상태를 변경하는 함수
 
+    const btnStyle = {
+      backgroundColor: '#59989b',
+      border: 'none',
+      borderRadius: 5,
+      width: 38,
+      height: 30,
+      margin: 10
+    };
+
+    const onIncrease = () => {
+    setNumber(number + 1);
+    // 또는
+    // 💛setNumber(prevNumber => prevNumber + 1);
+  };
+
+  const onDecrease = () => {
+    setNumber(number - 1);
+    // 또는
+    // 💛setNumber(prevNumber => prevNumber - 1);
+  };
+  // 💛: "함수형 업데이트" - 성능 최적화 관련
+
+    return (
+      <div>
+        <h1>0</h1>
+        <button style={btnStyle} onClick={onIncrease}>+1</button>
+        <button style={btnStyle} onClick={onDecrease}>-1</button>
+      </div>
+    )
+  }
+  ```
+
+  - 위 예제에서 알 수 있듯이, 리액트에서는 이벤트를 소문자가 아니라 camel case로 작성함.
+
+  - 문자열이 아니라 함수로 이벤트 핸들러를 전달하는데, 이때 주의해야 할 점은 함수를 <b>호출하면 안 된다</b>는 점!
+
+    - 전달할 때 함수를 호출해버리면 렌더링할 때 함수가 실행되어버림.
+
+___
+### input 상태 관리
+
+- 예제
+
+  ```js
+  function InputSample() {
+    const [text, setText] = useState('');
+
+    const onChange = e => {
+      setText(e.target.value);
+    };
+
+    const onReset = () => {
+      setText('');
+    };
+
+    return (
+      <div>
+        <input onChange={onChange} value={text} />
+        <button onClick={onReset}>초기화</button>
+        <div>
+          <b>값: </b>
+          {text}
+        </div>
+      </div>
+    )
+  }
+  ```
+
+- input이 여러 개일 때의 상태 관리
+
+  ```js
+  function InputSample() {
+    const [inputs, setInputs] = useState({
+      name: '',
+      nickname: '',
+    });
+
+    const { name, nickname } = inputs;
+
+    const onChange = e => {
+      // console.log(e.target.name + ': ' + e.target.value);
+      const { name, value } = e.target;
+      console.log(name + ': ' + value);
+
+      const nextInputs = {
+        ...inputs,
+        // 스프레드 문법
+        [name]: value
+        // [name]은 name이 될 수도 있고 nickname이 될 수도 있음.
+      };
+      console.log(nextInputs);
+
+      setInputs(nextInputs);
+    };
+
+    const onReset = () => {
+      setInputs({
+        name: '',
+        nickname: ''
+      });
+    };
+
+    return (
+      <div>
+        <input
+          name="name"
+          placeholder="이름"
+          onChange={onChange}
+          value={name}
+        />
+        <input
+          name="nickname"
+          placeholder="닉네임"
+          onChange={onChange}
+          value={nickname}
+        />
+        <button onClick={onReset}>초기화</button>
+        <div>
+          <b>값: </b>
+          {name} ({nickname})
+        </div>
+      </div>
+    );
+  }
+  ```
+
+  - 리액트에서 객체를 업데이트할 때는 우선 <u>기존의 객체를 복사</u>해야 함.
+
+  - 그리고 그 위에 새로운 값을 덮어씌우고 새로운 상태로 설정을 해줘야 함. => <b>"불변성을 지킨다!"</b>
+
+    - 불변성을 지켜야 컴포넌트 업데이트 성능을 최적화할 수 있음.
