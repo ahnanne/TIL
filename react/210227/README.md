@@ -68,7 +68,7 @@ P.S. We know this message is long but please read the steps above :-) We hope yo
 
     - 7번 아래의 안내(`If nothing else helps, add SKIP_PREFLIGHT_CHECK=true to an .env file in your project.`)에 따라 프로젝트 루트 디렉토리에 `.env`라는 이름의 파일을 생성한 후 `SKIP_PREFLIGHT_CHECK=true`를 써놓고 저장함.
 
-![image](https://user-images.githubusercontent.com/54733637/109408659-d47b3400-79ce-11eb-9848-d3332c0f58b2.png)
+    ![image](https://user-images.githubusercontent.com/54733637/109408659-d47b3400-79ce-11eb-9848-d3332c0f58b2.png)
 ##### 해결!
 
 ___
@@ -85,3 +85,99 @@ ___
 - JSX
 
   - JSX는 자바스크립트를 확장한 언어로, 출력하고 싶은 HTML 구조를 그대로 작성하면 되므로 코드를 직관적으로 작성하고 파악할 수 있음.
+
+  - JSX를 사용하면 컴포넌트를 만들 때마다 `React.createElement()`를 호출하지 않고도 간단하게 컴포넌트를 만들 수 있음.
+
+  - 문 끝에 세미콜론(`;`)은 붙여도 되고 안 붙여도 된다고 함.
+
+    ![image](https://user-images.githubusercontent.com/54733637/109408897-2fae2600-79d1-11eb-8747-408c7b90348e.png)
+    
+  - JSX가 자바스크립트로 제대로 변환이 되려면 아래와 같이 몇 가지 문법을 준수해야 함.
+
+    1) 태그는 <b>반드시 닫아주어야</b> 함. (`<img>` => X, `<img />` => O) 
+
+    2) 두 개 이상의 태그는 꼭 하나의 태그로 <b>감싸져 있어야</b> 함.
+
+      - 단순히 wrapping을 위해 불필요한 `<div>` 요소를 만들지 않고도, 아래와 같이 fragment를 사용하여 태그들을 묶을 수 있음. ([참고](https://ko.reactjs.org/docs/fragments.html#short-syntax))
+
+        ```js
+        return (
+          <React.Fragment>
+            <ChildA />
+            <ChildB />
+            <ChildC />
+          </React.Fragment>
+        );
+        
+        // 단축 문법
+        return (
+          <>
+            <td>Hello</td>
+            <td>World</td>
+          </>
+        );
+        ```
+        
+        - 소괄호(`()`)는 사용하지 않아도 문법적으로 오류는 없지만 가독성을 위해 사용함.
+
+  - JSX로 쓴 구문 내부에서 자바스크립트를 사용하고 싶으면 중괄호(`{}`)를 쓰고 그 안에 자바스크립트를 작성하면 됨.
+
+  - JSX로 스타일과 클래스 설정하기
+
+    ```js
+    function App() {
+      const name = 'react';
+      const style = {
+      backgroundColor: '#181818',
+      color: `#09a2aa`,
+      fontSize: 24,
+      fontWeight: 700,
+      padding: '1rem'
+    };
+
+      return (
+        <div>
+          <Hello />
+          <div style={style}>{name}</div>
+          <div className="gray-box"></div>
+        </div>
+      );
+    }
+    ```
+
+    - 스타일 설정하는 방법
+
+      - 객체를 만들어 주어야 함. (그냥 문자열로 넣어주면(`<div style="color: red">`) 동작 안함.)
+
+      - 객체를 만들 때, `background-color`와 같이 kebab case로 된 스타일 이름은 camel case로 바꿔줘야 함.
+
+      - 스타일 프로퍼티의 값이 숫자일 경우(ex: `fontSize`) 단위를 생략하면 기본 단위는 `px`이 됨.
+
+      - 단위를 따로 설정해주고 싶다면 문자열로 작성하면 됨. (ex: `'1rem'`)
+
+    - 클래스 설정하는 방법
+
+      - HTML에서는 클래스를 설정하려는 요소에 `class` 어트리뷰트를 사용하여 클래스를 지정하지만, JSX에서는 `className`을 사용함.
+
+  - 주석 작성하는 방법
+
+    - `{/* 내용 */}`
+
+    - 태그 내에도 아래와 같이 주석을 작성할 수 있으며, 이 방법으로 작성한 주석은 화면에 나타나지 않음.
+
+      ```js
+      <Hello
+        // self-closing 태그 내에 주석 작성하는 방법
+      />
+      ```
+    
+- `<noscript>` 요소
+
+  ![image](https://user-images.githubusercontent.com/54733637/109408996-3721ff00-79d2-11eb-899f-c39c011f1672.png)
+  
+  - `index.html` 파일에 기본으로 작성되어 있는 내용 중 `<noscript>` 태그가 있길래 어떤 때 사용하는 태그인지 찾아봄.
+
+  - `<noscript>` 요소는 브라우저에서 스크립트가 비활성화되어 있을 경우에 보여질 내용을 담는데, 스크립트를 지원하는 경우에는 표시되지 않음. ([참고](https://webdir.tistory.com/322))
+
+
+
