@@ -69,3 +69,23 @@ ___
 
 - 조건부 렌더링이란 특정 조건이 참인지 거짓인지에 따라 다른 결과를 보여주는 것을 의미함.
 
+- 삼항 조건 연산자 또는 `&&` 사용
+
+- JSX에서 `null`, `false`, `undefined`를 렌더링하게 되면 아무것도 안 나타나게 됨.
+
+  - cf.) `0`은 그대로 출력됨.
+
+- 어떤 `props`에 값을 안 주면 `true`로 지정한 것과 동일함.
+
+  ```
+  <Hello color="red" name="react" isSpecial={true} />
+  // same as
+  <Hello color="red" name="react" isSpecial />
+  ```
+
+___
+### useState를 통한 동적 상태 관리
+
+- 
+
+
