@@ -107,21 +107,7 @@
 <details>
 <summary>[WEEK10] (예정)</summary>
 
-- Set/Map
 - 에러 처리
 - 모듈
 
 </details>
-
-<details>
-<summary>[WEEK11] (예정)</summary>
-
-
-</details>
-
-<details>
-<summary>[WEEK12] (예정)</summary>
-
-
-</details>
-
