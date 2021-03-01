@@ -114,4 +114,97 @@
 ___
 ## Map
 
-- 
+- Map 객체는 <b>키(key)와 값(value)의 쌍</b>으로 이루어진 컬렉션으로, 일반적인 객체와 유사하지만 몇 가지 차이점이 있음.
+
+  1. 일반 객체와 달리 Map 객체에선 <b>객체를 포함한 모든 값</b>을 키로 사용할 수 있음.
+
+    - 일반 객체는 문자열 또는 심벌 값만 키로 사용할 수 있음.
+
+  2. 일반 객체와 달리 Map 객체는 언제나 <b>이터러블</b>임.
+
+  3. 일반 객체의 경우 <b>요소 개수를 확인</b>할 때 `length` 프로퍼티를 이용하는 반면, Map 객체는 `size` 프로퍼티를 이용함.
+
+### Map 객체 생성
+
+- Map 객체는 Map 생성자 함수로 생성함.
+
+  ```js
+  const myMap = new Map();
+  console.log(myMap); // Map(0) {}
+
+  const myStrMap = new Map('hello');
+  console.log(myStrMap); //TypeError: Iterator value h is not an entry object
+
+  const myCuteMap = new Map([['a', 'Anne'], ['b', 'blue'], ['c', 'cute']]);
+  console.log(myCuteMap);
+  // Map(3) { 'a' => 'Anne', 'b' => 'blue', 'c' => 'cute' } 🧙‍♂️
+  ```
+
+  - Map 생성자 함수에는 이터러블을 인수로 전달하는데, 아무런 인수도 전달하지 않으면 빈 Map 객체가 생성됨.
+
+  - 이터러블을 인수로 전달할 때, 이터러블은 키와 값의 쌍으로 이루어진 요소(`['키', '값']`)들로 구성되어야 함.
+
+  - 중복된 키를 갖는 요소를 전달하면 가장 나중에 전달하는 요소로 덮어써짐. => Map 객체에는 중복된 키를 갖는 요소가 존재하지 않음.
+
+### 요소 개수 확인
+
+- Map 객체의 요소 개수를 확인할 때는 `Map.prototype.size` 프로퍼티를 사용함.
+
+  - Set 객체의 경우와 마찬가지로, `size` 프로퍼티에는 setter 함수가 없으므로 재할당할 수 없음.
+
+### 요소 추가
+
+- Map 객체의 요소를 추가할 때는 `Map.prototype.set` 메서드를 사용함.
+
+  ```js
+  myCuteMap.set('d', 'Drake');
+  console.log(myCuteMap);
+  // Map(4) { 'a' => 'Anne', 'b' => 'blue', 'c' => 'cute', 'd' => 'Drake' } 😎
+  ```
+
+- `set` 메서드는 새로운 요소가 추가된 Map 객체를 반환함. => 메서드 체이닝 가능
+
+### 요소 취득
+
+- Map 객체에서 특정 요소를 취득할 때는 `Map.prototype.get` 메서드를 사용함.
+
+- `get` 메서드의 인수로는 키를 전달하는데, 해당 키를 갖는 요소가 <u>존재하면</u> 그 요소를 반환하며 만약 그런 요소가 <u>존재하지 않으면</u> `undefined`를 반환함.
+
+### 요소 존재 여부 확인
+
+- Map 객체에서 특정 요소가 존재하는지 확인할 때는 `Map.prototype.has` 메서드를 사용함.
+
+- `has` 메서드는 불리언 값을 반환함.
+
+### 요소 삭제
+
+- Map 객체에서 특정 요소를 삭제할 때는 `Map.prototype.delete` 메서드를 사용함.
+
+- `delete` 메서드는 불리언 값을 반환하는데, 이는 삭제 성공 여부를 나타냄.
+
+  ```js
+  console.log(myCuteMap.delete('b')); // true
+  console.log(myCuteMap); // Map(3) { 'a' => 'Anne', 'c' => 'cute', 'd' => 'Drake' }
+
+  console.log(myCuteMap.delete('e')); // false -> 에러가 발생하지는 않음.
+  ```
+
+### 요소 일괄 삭제
+
+- Map 객체에서 요소를 일괄 삭제할 때는 `Map.prototype.clear` 메서드를 사용함.
+
+- `clear` 메서드는 언제나 `undefined`를 반환함.
+
+### 요소 순회
+
+- Map 객체를 순회할 때는 `Map.prototype.forEach` 메서드를 사용함.
+
+  - 배열 고차 함수 `forEach`와 비슷하지만, 배열 고차 함수 `forEach`가 콜백 함수의 첫 번째 인수와 두 번째 인수로 각각 현재 순회 중인 요소와 현재 그 요소의 인덱스를 전달하는 것과 달리, `Map.prototype.forEach` 메서드는 콜백 함수의 첫 번째 인수와 두 번째 인수로 각각 현재 순회 중인 요소의 <b>값</b>과 현재 그 요소의 <b>키</b>를 전달받음.
+
+- Map 객체는 <b>이터러블</b>인바 아래와 같은 작업들도 가능함.
+
+  - <for...of문>으로 순회
+
+  - 스프레드 문법 사용
+
+  - 배열 디스트럭처링 할당
