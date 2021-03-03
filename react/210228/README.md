@@ -8,6 +8,8 @@
 
   - `props`는 properties의 약어로, 컴포넌트를 사용할 때 특정 값을 전달하고 싶을 경우 사용하는 것
 
+    > React가 사용자 정의 컴포넌트로 작성한 엘리먼트를 발견하면, <b>JSX <u>어트리뷰트</u>와 <u>자식</u>을 해당 컴포넌트에 단일 객체로 전달</b>합니다. 이 객체를 “`props`”라고 합니다. ([참고](https://ko.reactjs.org/docs/components-and-props.html#gatsby-focus-wrapper))
+
   - 사용 방법
 
     1. 매개변수로 `props` 쓰기
