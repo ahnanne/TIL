@@ -173,6 +173,9 @@ ___
 
       - HTML에서는 클래스를 설정하려는 요소에 `class` 어트리뷰트를 사용하여 클래스를 지정하지만, JSX에서는 `className`을 사용함.
 
+        > JSX는 HTML보다는 JavaScript에 가깝기 때문에, React DOM은 <u>HTML 어트리뷰트 이름 대신 **camelCase 프로퍼티 명명 규칙을 사용**</u>합니다.
+        > 예를 들어, JSX에서 `class`는 `className`가 되고 `tabindex`는 `tabIndex`가 됩니다. ([참고](https://ko.reactjs.org/docs/introducing-jsx.html#specifying-attributes-with-jsx))
+
   - 주석 작성하는 방법
 
     - `{/* 내용 */}`
