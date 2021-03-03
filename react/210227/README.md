@@ -122,6 +122,8 @@ ___
 
   - JSX로 쓴 구문 내부에서 자바스크립트를 사용하고 싶으면 중괄호(`{}`)를 쓰고 그 안에 자바스크립트를 작성하면 됨.
 
+    > JSX의 중괄호(`{}`) 안에는 유효한 모든 JavaScript 표현식을 넣을 수 있습니다. ([참고](https://ko.reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx))
+
   - JSX로 스타일과 클래스 설정하기
 
     ```js
