@@ -87,7 +87,26 @@ ___
 ___
 ### 배열에 항목 제거하기
 
-- 
+- 이벤트 핸들러 등록 관련
+
+  ![image](https://user-images.githubusercontent.com/54733637/109794797-95144800-7c59-11eb-81e0-3c3ce90312cf.png)
+  
+- 배열에서 특정 요소를 제거할 때는 `filter` 메서드가 유용함.
+
+___
+### 배열에 항목 수정하기
+
+- 계정을 클릭했을 때 텍스트 컬러 바꾸는 기능 구현하기
+
+  - 각 user에 `active`라는 프로퍼티를 추가적으로 부여하고 이를 이용해 control해보자.
+
+  - 삼항 조건 연산자 사용하기
+
+    ![image](https://user-images.githubusercontent.com/54733637/109797190-7794ad80-7c5c-11eb-95c0-9f61c5cae6e1.png)
+  
+  - `active` 값 토글하는 함수 만들고 이벤트 핸들러 등록해주기
+
+- 배열 안에 있는 요소를 업데이트 할 때는 `map` 메서드가 유용함.
 
 ___
 ### `useState`
