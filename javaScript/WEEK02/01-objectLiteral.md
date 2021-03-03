@@ -141,6 +141,29 @@ console.log(cafe2);
 ### 메서드 축약 표현
 
 ```js
+// ES5
+const cafe1 = {
+  name: 'Starbucks',
+  city: 'Seoul',
+  drink: function() {
+    return `"I love ${this.name} coffee."`;
+  }
+};
+
+console.log(cafe1.drink());
+// "I love Starbucks coffee."
+
+// ES6
+const cafe2 = {
+  name: 'Tim Hortons',
+  city: 'Toronto',
+  drink() {
+    return `"I love ${this.name} coffee."`;
+  }
+};
+
+console.log(cafe2.drink());
+// "I love Tim Hortons coffee."
 ```
 
 - ES6에서는 메서드를 정의할 때, function 키워드를 생략한 축약 표현을 사용할 수 있음.
