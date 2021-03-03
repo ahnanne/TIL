@@ -15,6 +15,7 @@
 
   ```js
   const nextId = useRef(4);
+  // useRef()의 인수로는 해당 변수에 초기값으로 할당해줄 값을 전달해야 함.
 
   const onCreate = () => {
     console.log(nextId.current);
