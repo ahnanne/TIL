@@ -72,6 +72,38 @@
   - cf.) custom Hook 내부에서도 Hook을 호출할 수 있다고 함.
 
 ___
+### `useEffect`
+
+- 리액트 공식 문서 [참고](https://ko.reactjs.org/docs/hooks-effect.html)
+
+- side effects
+
+  - 리액트 컴포넌트에는 일반적으로 두 종류의 side effects가 있음.
+
+    1. 정리(clean-up)가 필요하지 않은 것 => return문 X
+
+    2. 정리(clean-up)가 필요한 것 => return문 O
+
+- 정리(clean-up)를 이용하지 않는 Effects
+
+  > 리액트가 DOM을 업데이트한 뒤 추가로 코드를 실행해야 하는 경우가 있습니다. 네트워크 리퀘스트, DOM 수동 조작, 로깅 등은 정리(clean-up)가 필요 없는 경우들입니다. 이러한 예들은 실행 이후 신경 쓸 것이 없기 때문입니다.
+
+  > 리액트는 **effect가 수행되는 시점에 이미 DOM이 업데이트되었음**을 보장합니다.
+
+
+- 정리(clean-up)를 이용하는 Effects
+
+- `useEffect`를 컴포넌트 안에서 불러내는 이유
+
+  - `useEffect`를 컴포넌트 안에 두면, API 없이도 effect를 통해 state 변수 또는 props에 접근할 수 있음.
+
+  - effect란 `useEffect`의 인수로 전달한 함수를 의미함.
+
+- `useEffect`는 **마운팅**(=첫 번째 렌더링)과 이후의 모든 **업데이트**에서 수행됨.
+
+(https://ko.reactjs.org/docs/hooks-effect.html#detailed-explanation 부터 이어서..)
+
+___
 ### `useEffect` 사용 실습
 
 - `useEffect`를 사용하면, 우리가 만든 컴포넌트가 화면에 나타나게 될 때와 화면에서 사라지게 될 때 특정 작업을 할 수 있고, 컴포넌트의 props나 state가 업데이트 될 때도 특정 작업을 할 수 있음. 리렌더링 될 때마다 수행할 작업을 등록할 수도 있음.
