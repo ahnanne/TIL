@@ -109,8 +109,6 @@ ___
 
 - `useEffect`는 **마운팅**(=첫 번째 렌더링)과 이후의 모든 **업데이트**에서 수행됨.
 
-(https://ko.reactjs.org/docs/hooks-effect.html#detailed-explanation 부터 이어서..)
-
 ___
 ### `useEffect` 사용 실습
 
