@@ -107,6 +107,10 @@ ___
 
   - effect란 `useEffect`의 인수로 전달한 함수를 의미함.
 
+    - effect의 기본 동작은 매번 렌더링을 완료한 후 effect를 발생하는 것임. => 즉, dependencies 중 하나라도 변경될 때마다 effect가 호출됨.
+
+    - 이러한 기본 동작을 제한하기 위해, 해당 effect가 의존하는 값들로 이루어진 **배열**을 `useEffect`의 두 번째 인수로 전달함. ([참고](https://reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect)) => 해당 값이 바뀔 때만 effect가 호출됨.
+
 - `useEffect`는 **마운팅**(=첫 번째 렌더링)과 이후의 모든 **업데이트**에서 수행됨.
 
 ___
