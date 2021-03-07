@@ -121,10 +121,10 @@ ___
     1. 첫 번째 요소 : **state 변수**(상태 변수)
 
     2. 두 번째 요소 : 첫 번째 요소(state 변수)를 **갱신하는 함수**
+    
+        - 이 함수의 인수로는 **상태 변수를 갱신할 값** 자체를 전달해야 함. (cf. [**함수적 갱신**](https://ko.reactjs.org/docs/hooks-reference.html#functional-updates))
 
-      - 이 함수의 인수로는 **상태 변수를 갱신할 값** 자체를 전달해야 함.
-
-      - cf.) 클래스형 컴포넌트에서는 `this.setState`를 쓴다고 함.
+        - cf.) 클래스형 컴포넌트에서는 `this.setState`를 쓴다고 함.
 
 - `useState()`의 인수로는 state 변수의 **초기값**으로 설정할 값을 전달해야 함.
 
