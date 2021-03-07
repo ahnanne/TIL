@@ -121,6 +121,22 @@ ___
 
 - `useReducer`를 사용하면 상태 업데이트 로직을 해당 컴포넌트 밖으로 분리시킬 수 있음. (아예 다른 파일에 작성하여 불러오는 것도 가능함.)
 
-- 리액트 공식 문서 내용 ([참고](`useReducer`))
+- 리액트 공식 문서 내용 ([참고](https://ko.reactjs.org/docs/hooks-reference.html#usereducer))
 
-  - 
+  ```js
+  const [state, dispatch] = useReducer(reducer, initialArg, init);
+  ```
+
+  - 첫 번째 인수로 전달되는 reducer는 콜백 함수로, `(state, action) => newState`의 형태임.
+
+  - 두 번째 인수로는 state의 초기값으로 설정할 값을 전달할 수 있음. (옵션)
+
+  - *세 번째 인수로는 초기화 지연을 위한 함수를 전달할 수 있음.* (옵션)
+
+    - 참고 : https://ko.reactjs.org/docs/hooks-reference.html#lazy-initialization
+
+  - `dispatch`는 함수 컴포넌트로서, action을 발생시킴.
+
+  - 보통 어떤 때 쓸까?
+
+    > 다수의 하윗값을 포함하는 복잡한 정적 로직을 만드는 경우나 **다음 state가 이전 state에 의존적인 경우**에 보통 `useState`보다 `useReducer`를 선호합니다.
