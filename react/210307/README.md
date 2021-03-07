@@ -65,3 +65,12 @@ ___
 - 크롬 확장 프로그램인 React Developer Tools 설치하기
 
   - [바로가기](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=ko)
+
+  - 'Highlight updates when components render.'에 체크
+
+    ![image](https://user-images.githubusercontent.com/54733637/110235526-d23b4b80-7f73-11eb-8079-4ae5e297eb3e.png)
+    
+    - 그러면 렌더링될 때마다 아래와 같이 실선으로 표시됨.
+
+      ![image](https://user-images.githubusercontent.com/54733637/110235568-162e5080-7f74-11eb-831a-39aae16332ed.png)
+
