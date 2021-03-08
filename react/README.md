@@ -26,4 +26,4 @@
 
 - [21/03/07 온라인 강의 내용](https://github.com/ahnanne/TIL/tree/main/react/210307)
 
-  - `useMemo`, `useCallback`, React Developer Tools, `React.memo`, 함수형 업데이트(함수적 갱신), `useReducer`
+  - `useMemo`, `useCallback`, React Developer Tools, `React.memo`, 함수형 업데이트(함수적 갱신), `useReducer`, custom Hook
