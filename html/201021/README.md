@@ -19,11 +19,11 @@
 
   - `button` 태그의 attribute 중 `type`에는 아래의 3가지 값이 옴.
 
-    1. `button' : 일반적인 버튼
+    1. `button` : 일반적인 버튼
 
     2. `reset` : 초기화를 위한 버튼
 
-    3. `submit` : 서버로 데이터를 제출하기 위한 버튼
+    3. `submit` : 서버로 데이터를 제출하기 위한 버튼 => type 명시 안 해줄 경우 기본값
 
   - `button` 태그는 focus를 받으면 outline이 생기는데, CSS에서 아래 방법으로 제거할 수 있음.
 
