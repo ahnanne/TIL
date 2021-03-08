@@ -5,6 +5,16 @@
 
   ![image](https://user-images.githubusercontent.com/54733637/110290759-7da8d680-802e-11eb-9c79-62f76cb76183.png)
 
+- `React.createContext`
+
+  ```js
+  const MyContext = React.createContext(defaultValue);
+  ```
+
+  - `React.createContext`는 Context 객체를 만들어냄.
+
+  (https://ko.reactjs.org/docs/context.html#reactcreatecontext 부터 계속..)
+
 ___
 ### `useCallback` Hook
 
