@@ -77,7 +77,7 @@ P.S. We know this message is long but please read the steps above :-) We hope yo
 
     - `.env` 파일에 작성한 `SKIP_PREFLIGHT_CHECK=true`는 '오류가 발생하면 검사를 무시하도록 설정하여 일시적으로 문제가 발생하지 않게 조치한 것'이라고 함. ([참고](https://yamoo9.gitbook.io/learning-react-app/tip-and-references/create-react-app/create-react-app#install-failed))
 
-      - 즉 위 해결 방법은 임시방편임.
+      - 즉 위 해결 방법은 임시방편이며, `SKIP_PREFLIGHT_CHECK=true`는 위와 같이 에러가 나는 상황에서만 켜둘 것
 
 ___
 ### 실습
