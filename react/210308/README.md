@@ -43,7 +43,7 @@
     
     - context 값이 바뀌었는지 여부는 `Object.is`([참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is#%EC%84%A4%EB%AA%85))와 동일한 알고리즘을 사용하여 이전 값과 새로운 값을 비교해서 측정하기 때문에, 만약 `value` 값으로 객체를 전달하는 경우에는 문제가 생길 수 있음. ([참고](https://ko.reactjs.org/docs/context.html#caveats))
 
-  - `Class.contextType`
+  - `Class.contextType` (?)
 
     > `React.createContext()`로 생성한 Context 객체를 원하는 클래스의 `contextType` 프로퍼티로 지정할 수 있습니다. 이 프로퍼티를 활용해 클래스 안에서 `this.context`를 이용해 해당 Context의 가장 가까운 `Provider`를 찾아 그 값을 읽을 수 있게 됩니다.
     
@@ -81,8 +81,31 @@
     </MyContext.Consumer>
     ```
 
-    - https://ko.reactjs.org/docs/context.html#contextconsumer 부터 이어서..
-___
-### `useCallback` Hook
+    > `Context.Consumer`의 자식(=하위 요소)은 <b>함수</b>여야합니다. 이 함수는 <u>context의 현재값</u>(=위 코드에서 `value`)을 받고 React 노드를 반환(=render)합니다.
+    
+    > 이 함수가 받는 `value` 매개변수 값은 해당 context의 `Provider` 중 상위 트리에서 가장 가까운 `Provider`의 `value` prop과 동일합니다. 상위에 `Provider`가 없다면, `value` 매개변수 값은 `createContext()`에 보냈던 `defaultValue`와 동일할 것입니다.
 
-- 
+    - `Context.Consumer`는 context 변화를 구독하는 React **컴포넌트**로서, 함수 컴포넌트 안에서 context를 구독할 때 사용함.
+
+  - `Context.displayName`
+
+    - `displayName`은 Context 객체의 문자열 프로퍼티인데, 해당 Context 객체가 React DevTools에 어떤 이름으로 보여질지를 설정함. ([참고](https://blog.logrocket.com/react-reference-guide-context-api/#contextdisplayname))
+
+    - 예제
+
+      ```js
+      import { createContext } from 'react';
+
+      const MyContext = createContext('defaulttt');
+      MyContext.displayName = 'AESPA';
+
+      return (
+        <>
+        <MyContext.Consumer>
+          {value => <div>{value}</div>}
+        </MyContext.Consumer>
+        </>
+      )
+      ```
+
+      - 출력 결과

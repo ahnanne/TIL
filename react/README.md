@@ -30,4 +30,4 @@
 
 - [21/03/08 온라인 강의 내용](https://github.com/ahnanne/TIL/tree/main/react/210308)
 
-  - Context API, `React.createContext`, 
+  - Context API, `React.createContext`, `Context.Provider`, `Class.contextType`, `Context.Consumer`, `Context.displayName`
