@@ -71,6 +71,14 @@ P.S. We know this message is long but please read the steps above :-) We hope yo
     ![image](https://user-images.githubusercontent.com/54733637/109408659-d47b3400-79ce-11eb-9848-d3332c0f58b2.png)
 ##### 해결!
 
+  - 문제 원인(21/03/09 강의내용 참고)
+
+    - 의존성 호환 문제로 인해 에러가 발생한 것이라고 함.
+
+    - `.env` 파일에 작성한 `SKIP_PREFLIGHT_CHECK=true`는 '오류가 발생하면 검사를 무시하도록 설정하여 일시적으로 문제가 발생하지 않게 조치한 것'이라고 함. ([참고](https://yamoo9.gitbook.io/learning-react-app/tip-and-references/create-react-app/create-react-app#install-failed))
+
+      - 즉 위 해결 방법은 임시방편임.
+
 ___
 ### 실습
 
