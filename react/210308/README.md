@@ -109,3 +109,5 @@
       ```
 
       - 출력 결과
+
+        ![image](https://user-images.githubusercontent.com/54733637/110485820-61409300-812f-11eb-901a-f40c16655d1c.png)
