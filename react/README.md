@@ -28,6 +28,6 @@
 
   - `useMemo`, `useCallback`, React Developer Tools, `React.memo`, 함수형 업데이트(함수적 갱신), `useReducer`, custom Hook
 
-- [21/03/08 온라인 강의 내용](https://github.com/ahnanne/TIL/tree/main/react/210308)
+- [21/03/12 오프라인 강의 내용](https://github.com/ahnanne/TIL/tree/main/react/210312)
 
-  - Context API, `React.createContext`, `Context.Provider`, `Class.contextType`, `Context.Consumer`, `Context.displayName`
+  - `setState()`, 
