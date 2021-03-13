@@ -76,7 +76,7 @@ ___
 
   - `false`를 반환하도록 하여 갱신 중단
 
-- `shouldComponentUpdate`를 사용하는 경우
+- `shouldComponentUpdate` 활용 예
 
   - 이전 상태의 속성과 다음 상태의 속성이 같을 경우 갱신하지 않도록 설정
 
