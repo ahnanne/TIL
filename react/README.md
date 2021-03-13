@@ -30,4 +30,4 @@
 
 - [21/03/12 오프라인 강의 내용](https://github.com/ahnanne/TIL/tree/main/react/210312)
 
-  - `setState()`, 
+  - `setState()`, `static getDerivedStateFromProps`, `shouldComponentUpdate`, `render`, `getSnapshotBeforeUpdate
