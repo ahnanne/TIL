@@ -57,6 +57,52 @@
   - https://ko.reactjs.org/docs/faq-state.html
 
 ___
-### ``
+### `static getDerivedStateFromProps`
 
-- 
+- `static getDerivedStateFromProps`는 상위 컴포넌트로부터 전달받은 `props`와 컴포넌트 자신의 `state`를 조합하여 `state`를 갱신하거나 추가할 수 있음.
+
+  - 리액트 공식 문서는 `static getDerivedStateFromProps` 대신 다른 대안들을 사용할 것을 권장하고 있음. => [(참고1)](https://ko.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state), [(참고2)](https://ko.reactjs.org/docs/react-component.html#static-getderivedstatefromprops)
+
+- `static getDerivedStateFromProps`는 렌더링될 때마다 매번 실행되는데, **`render` 메서드가 실행되기 직전**에 실행됨.
+
+  ![image](https://user-images.githubusercontent.com/54733637/111025093-77976900-8425-11eb-8f91-78fd226948bd.png)
+  
+- 클래스 컴포넌트에서만 사용 가능
+
+___
+### `shouldComponentUpdate`
+
+- `shouldComponentUpdate`를 사용하면 특정 조건에 부합할 경우 갱신을 중단할 수 있음.
+
+  - `false`를 반환하도록 하여 갱신 중단
+
+- `shouldComponentUpdate`를 사용하는 경우
+
+  - 이전 상태의 속성과 다음 상태의 속성이 같을 경우 갱신하지 않도록 설정
+
+  - 상태가 특정 값에 도달하면 더 이상 갱신하지 않도록 설정 (즉, 상태 변경의 범위를 설정할 수 있음.)
+
+    - ex) 카운터 예제
+
+___
+### `render`
+
+- `render` 메서드는 어떤 컴포넌트가 존재하는 한, 해당 컴포넌트에서 업데이트가 발생할 때마다 호출됨. ([참고](https://ko.reactjs.org/docs/state-and-lifecycle.html#converting-a-function-to-a-class))
+
+  - 업데이트란 `props`나 `state`가 갱신되는 것을 의미함.
+
+___
+### `getSnapshotBeforeUpdate`
+
+- ...
+
+___
+### `componentDidUpdate`
+
+- ...
+
+___
+### `componentWillUnmount`
+
+- ...
+
