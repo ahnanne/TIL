@@ -51,11 +51,6 @@
       });
       ```
 
-(아래부터 이어서)
-  - https://ko.reactjs.org/docs/state-and-lifecycle.html
-
-  - https://ko.reactjs.org/docs/faq-state.html
-
 ___
 ### `static getDerivedStateFromProps`
 
@@ -94,15 +89,57 @@ ___
 ___
 ### `getSnapshotBeforeUpdate`
 
-- ...
+> `getSnapshotBeforeUpdate()`는 <b>가장 마지막으로 렌더링된 결과</b>가 DOM 등에 반영되었을 때에 호출됩니다. 이 메서드를 사용하면 컴포넌트가 DOM으로부터 스크롤 위치 등과 같은 정보를 이후 변경되기 전에 얻을 수 있습니다. <b>이 생명주기가 반환하는 값은 `componentDidUpdate()`에 인자로 전달</b>됩니다. ([참고](https://ko.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate))
+
+- 활용 예 : 채팅 화면 - 스크롤 위치를 처리하는 작업이 필요한 UI
+
+- `getSnapshotBeforeUpdate`는 ①스냅샷 값 또는 ②`null`을 반환함.
+
+  - 스냅샷 값이란, `getSnapshotBeforeUpdate`가 반환한 값을 의미함.
 
 ___
 ### `componentDidUpdate`
 
-- ...
+- `componentDidUpdate`는 **갱신이 일어난 직후**에 호출됨.
+
+  - **최초 렌더링에서는 호출되지 않음!**
+
+> 컴포넌트가 갱신되었을 때 <b>DOM을 조작</b>하기 위하여 이 메서드를 활용하면 좋습니다. 또한, <b>이전과 현재의 props를 비교하여 네트워크 요청을 보내는 작업</b>도 이 메서드에서 이루어지면 됩니다. (가령, props가 변하지 않았다면 네트워크 요청을 보낼 필요가 없습니다.) ([참고](https://ko.reactjs.org/docs/react-component.html#componentdidupdate))
+
+- `componentDidUpdate`에 인자로 전달되는 것들
+
+  ```js
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // 세 번째 인자로 전달되는 snapshot은,
+    // getSnapshotBeforeUpdate가 반환한 값을 의미함.
+  }
+  ```
+  
+- 활용 예 ([출처](https://ko.reactjs.org/docs/react-component.html#componentdidupdate))
+
+  ```js
+  componentDidUpdate(prevProps) {
+    // 전형적인 사용 사례 (props 비교를 잊지 마세요)
+    if (this.props.userID !== prevProps.userID) {
+      this.fetchData(this.props.userID);
+    }
+  }
+  ```
 
 ___
 ### `componentWillUnmount`
 
 - ...
 
+___
+### 리렌더링될 때 메서드 호출 순서
+
+1. `static getDerivedStateFromProps`
+
+2. `shouldComponentUpdate`
+
+3. `render`
+
+4. `getSnapshotBeforeUpdate`
+
+5. `componentDidUpdate`
