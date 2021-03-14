@@ -58,7 +58,7 @@ ___
 
   - 리액트 공식 문서는 `static getDerivedStateFromProps` 대신 다른 대안들을 사용할 것을 권장하고 있음. => [(참고1)](https://ko.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state), [(참고2)](https://ko.reactjs.org/docs/react-component.html#static-getderivedstatefromprops)
 
-- `static getDerivedStateFromProps`는 렌더링될 때마다 매번 실행되는데, **`render` 메서드가 실행되기 직전**에 실행됨.
+- `static getDerivedStateFromProps`는 렌더링될 때마다 매번 실행되는데, **`render` 메서드가 실행되기 직전에** 실행됨.
 
   ![image](https://user-images.githubusercontent.com/54733637/111025093-77976900-8425-11eb-8f91-78fd226948bd.png)
   
@@ -100,7 +100,7 @@ ___
 ___
 ### `componentDidUpdate`
 
-- `componentDidUpdate`는 **갱신이 일어난 직후**에 호출됨.
+- `componentDidUpdate`는 **갱신이 일어난 직후에** 호출됨.
 
   - **최초 렌더링에서는 호출되지 않음!**
 
@@ -110,8 +110,9 @@ ___
 
   ```js
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // 세 번째 인자로 전달되는 snapshot은,
-    // getSnapshotBeforeUpdate가 반환한 값을 의미함.
+    // 이때 세 번째 인자로 전달되는 snapshot은
+    // getSnapshotBeforeUpdate가 반환한 값임.
+    // (getSnapshotBeforeUpdate의 반환값이 없을 경우에는 undefined)
   }
   ```
   
@@ -125,11 +126,25 @@ ___
     }
   }
   ```
+  
+- 주의할 점
+
+  - `shouldComponentUpdate`가 `false`를 반환할 경우, `componentDidUpdate`는 호출되지 않음.
+
+  - 조건문으로 감싸지 않으면 무한 반복이 발생할 수 있음.
+
+  - 추가적인 렌더링을 유발할 수 있음.
+
+  - prop을 state에 저장 및 복사하는 것은 버그를 유발할 수 있으므로, 전달 받은 prop을 직접 사용하는 것이 좋음. ([참고](https://ko.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html))
 
 ___
 ### `componentWillUnmount`
 
-- ...
+- `componentWillUnmount`는 컴포넌트가 **제거되기 직전에** 호출됨. ([참고](https://ko.reactjs.org/docs/react-component.html#componentwillunmount))
+
+- 활용 예
+
+  > 이 메서드 내에서 타이머 제거, 네트워크 요청 취소, `componentDidMount()` 내에서 생성된 구독 해제 등 필요한 모든 정리 작업을 수행하세요.
 
 ___
 ### 리렌더링될 때 메서드 호출 순서
