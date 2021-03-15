@@ -31,3 +31,7 @@
 - [21/03/12 오프라인 강의 내용](https://github.com/ahnanne/TIL/tree/main/react/210312)
 
   - `setState()`, `static getDerivedStateFromProps`, `shouldComponentUpdate`, `render`, `getSnapshotBeforeUpdate`, `componentDidUpdate`, `componentWillUnmount`
+
+- [21/03/15 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210315)
+
+  - `forceUpdate()`
