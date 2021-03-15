@@ -15,7 +15,7 @@
 
     > context를 사용하면 중간에 있는 엘리먼트들에게 props를 넘겨주지 않아도 됩니다.
 
-- `Context API` : `Context API`를 사용하면 여러 컴포넌트 간 props를 전달하고 또 전달하는 과정(아래 그림에서 노란색 화살표)을 간단하게(아래 그림에서 보라색 화살표) 할 수 있음.
+- Context API를 사용하면 여러 컴포넌트 간 props를 전달하고 또 전달하는 과정(아래 그림에서 노란색 화살표)을 간단하게(아래 그림에서 보라색 화살표) 할 수 있음.
 
   ![image](https://user-images.githubusercontent.com/54733637/110290759-7da8d680-802e-11eb-9c79-62f76cb76183.png)
 
