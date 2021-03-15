@@ -1,5 +1,5 @@
 # 21/03/08 수업 내용
-### `Context API`를 사용한 전역 값 관리
+### Context API를 사용한 전역 값 관리
 
 - context ([참고](https://ko.reactjs.org/docs/context.html))
 
