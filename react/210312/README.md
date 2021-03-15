@@ -102,6 +102,14 @@ constructor(props)
 ___
 ### `static getDerivedStateFromProps`
 
+```js
+static getDerivedStateFromProps(props, state)
+```
+
+- `static getDerivedStateFromProps`는 첫 번째 인자로 `props`를 전달 받고, 두 번째 인자로 `state`를 전달 받음.
+
+  ![image](https://user-images.githubusercontent.com/54733637/111113348-fb2b9400-85a4-11eb-96a2-a02ae2884204.png)
+
 - `static getDerivedStateFromProps`는 상위 컴포넌트로부터 전달받은 `props`와 컴포넌트 자신의 `state`를 조합하여 `state`를 갱신하거나 추가할 수 있음.
 
   - 리액트 공식 문서는 `static getDerivedStateFromProps` 대신 다른 대안들을 사용할 것을 권장하고 있음. => [(참고1)](https://ko.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state), [(참고2)](https://ko.reactjs.org/docs/react-component.html#static-getderivedstatefromprops)
