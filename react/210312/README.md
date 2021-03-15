@@ -52,6 +52,54 @@
       ```
 
 ___
+### `constructor`
+
+```js
+constructor(props)
+```
+
+- 이하의 내용들은 공식 문서를 참고했음. ([링크](https://ko.reactjs.org/docs/react-component.html#constructor))
+
+> <b>메서드를 바인딩하거나 state를 초기화하는 작업이 없다면, 해당 React 컴포넌트에는 생성자(constructor)를 구현하지 않아도 됩니다.</b>
+
+- 어떤 컴포넌트의 `constructor`는 해당 컴포넌트가 마운트되기 전에 호출됨.
+
+- `constructor`를 구현할 때, 다른 구문에 앞서 제일 먼저 `super(props);`부터 호출해야 함.
+
+  - `constructor` 내에 `this.props`를 정의하기 위함.
+
+- `constructor` 사용 목적
+
+  1. `this.state`에 객체를 할당하여 지역 상태를 초기화하기 위함.
+
+  2. 인스턴스에 이벤트 처리 메서드를 바인딩하기 위함.
+
+- 다른 메서드 내에서는 `this.state`를 직접 할당할 수 없고 `this.setState()`를 사용해야 하지만, `constructor` 내에서만큼은 `this.state`를 직접 할당할 수 있음. => 초기 상태
+
+  - 단, `constructor` 내에서는 `setState()`를 호출하면 안됨.
+
+- 주의할 점
+
+  - `constructor` 내에서는 `setState()`를 호출하면 안됨.
+
+  - `constructor` 내에서는 부수 효과를 발생시키거나 <i>구독 작업(subscription)</i>을 수행하면 안됨.
+
+    - 해당 작업들이 필요한 경우 `componentDidMount`에서 처리할 것
+
+  - state에 props를 복사하면 안 됨.
+
+    ```js
+    // Bad
+    constructor(props) {
+      super(props);
+      // 이렇게 하지 마세요!
+      this.state = { color: props.color };
+    }
+    ```
+
+    - **props의 갱신을 의도적으로 무시해야 할 때만** 저렇게 할 것
+
+___
 ### `static getDerivedStateFromProps`
 
 - `static getDerivedStateFromProps`는 상위 컴포넌트로부터 전달받은 `props`와 컴포넌트 자신의 `state`를 조합하여 `state`를 갱신하거나 추가할 수 있음.
@@ -61,8 +109,6 @@ ___
 - `static getDerivedStateFromProps`는 렌더링될 때마다 매번 실행되는데, **`render` 메서드가 실행되기 직전에** 실행됨.
 
   ![image](https://user-images.githubusercontent.com/54733637/111025093-77976900-8425-11eb-8f91-78fd226948bd.png)
-  
-- 클래스 컴포넌트에서만 사용 가능
 
 ___
 ### `shouldComponentUpdate`
@@ -70,6 +116,12 @@ ___
 - `shouldComponentUpdate`를 사용하면 특정 조건에 부합할 경우 갱신을 중단할 수 있음.
 
   - `false`를 반환하도록 하여 갱신 중단
+
+  - `false`를 반환할 경우, `render`와 `componentDidUpdate`가 호출되지 않음.
+
+- 사용 목적 : **성능 최적화** ([참고](https://ko.reactjs.org/docs/react-component.html#shouldcomponentupdate))
+
+  - 즉, 렌더링이 <u>불필요한 경우</u>에는 렌더링을 하지 않음으로써 성능을 최적화할 수 있지만, 그런 경우가 아니라면 버그로 이어질 수도 있음.
 
 - `shouldComponentUpdate` 활용 예
 
@@ -82,9 +134,47 @@ ___
 ___
 ### `render`
 
+- 이하의 내용들은 공식 문서를 참고했음. ([링크](https://ko.reactjs.org/docs/react-component.html#render))
+
+- **클래스 컴포넌트**를 구현할 때, 다른 생명 주기 메서드들은 필수가 아니지만 **`render` 메서드는 필수**로 구현되어야 함.
+
+- `render` 메서드는 아래의 것들 중 하나를 반환해야 함.
+
+  1. **React 엘리먼트**
+
+      - 보통 JSX를 사용하여 생성함.
+
+  2. **배열, Fragment**
+
+      - 배열을 사용하면 여러 개의 엘리먼트가 반환됨.
+
+  3. **Portal** ([참고](https://ko.reactjs.org/docs/portals.html))
+
+      - *별도의 DOM 하위 트리에 자식 엘리먼트를 렌더링함.*
+
+  4. **문자열, 숫자**
+
+      - DOM 상에 **텍스트 노드**로서 렌더링됨.
+
+  5. **Boolean, `null`**
+
+      - render nothing
+
+- `render` 메서드는 **순수**해야 함.
+
+  - "순수하다" ?
+
+    - 컴포넌트의 state를 변경하지 않는다.
+
+    - 호출될 때마다 동일한 결과를 반환해야 한다.
+
+    - *브러우저와 직접적으로 상호작용을 하지 않는다.* => cf.) 브라우저와 상호작용하는 작업은 `componentDidMount` 등에서 수행할 것
+
 - `render` 메서드는 어떤 컴포넌트가 존재하는 한, 해당 컴포넌트에서 업데이트가 발생할 때마다 호출됨. ([참고](https://ko.reactjs.org/docs/state-and-lifecycle.html#converting-a-function-to-a-class))
 
   - 업데이트란 `props`나 `state`가 갱신되는 것을 의미함.
+
+  - 하지만 `shouldComponentUpdate`가 `false`를 반환하는 경우에는 `render`가 호출되지 않음.
 
 ___
 ### `getSnapshotBeforeUpdate`
