@@ -246,11 +246,63 @@ ___
 
 - context의 값은 위와 같이 문자열이 될 수도 있고, 객체나 메서드가 될 수도 있다.
 
+- context를 별도의 파일로 분리해서, 즉 context 모듈로 만들어서 `import`하여 쓰는 방법도 있다.
+
 - context를 사용하여 상태 관리의 복잡함을 해결할 수는 있지만, 컴포넌트를 재사용하기가 어려워진다는 단점이 있다. 따라서 보다 더 좋은 방법은 Redux와 같은 **상태 관리 시스템** 라이브러리를 활용하는 것이다.
 
   - 상태 관리 시스템 : 리액트 애플리케이션의 모든 상태를 하나의 저장소(store)에서 통합적으로 관리하는 시스템
 
   - 상태 관리 시스템 라이브러리에는 Redux, Mobx, Vuex 등이 있다.
+
+___
+### Context Type
+
+- `React.createContext()`로 생성한 Context 객체는 ①클래스 컴포넌트의 외부에서 클래스 컴포넌트의 `contextType` 프로퍼티의 값으로 지정하거나, ②public class fields syntax(클래스 몸체에서 `static` 키워드를 사용하여 클래스의 정적 프로퍼티를 정의하는 방식)를 이용하여 클래스 내부에서 `contextType`의 값으로 지정할 수 있음. ([참고](https://ko.reactjs.org/docs/context.html#classcontexttype))
+
+  ```js
+  // ①
+  class MyClass extends React.Component {
+    componentDidMount() {
+      let value = this.context;
+      /* MyContext의 값을 이용한 코드 */
+    }
+    componentDidUpdate() {
+      let value = this.context;
+      /* ... */
+    }
+    componentWillUnmount() {
+      let value = this.context;
+      /* ... */
+    }
+    render() {
+      let value = this.context;
+      /* ... */
+    }
+  }
+  MyClass.contextType = MyContext;
+  ```
+  ```js
+  // ②
+  class MyClass extends React.Component {
+    static contextType = MyContext;
+    render() {
+      let value = this.context;
+      /* context 값을 이용한 렌더링 */
+    }
+  }
+  ```
+  
+  - `contextType`은 정적 프로퍼티이며, 이 프로퍼티에 할당한 값은 클래스 컴포넌트의 모든 life cycle 메서드 내에서 `this.context`로 읽고 사용할 수 있음. 즉, `Context.Consumer` 없이도 context를 사용할 수 있음.
+
+  - `contextType`의 한계
+
+    - `contextType`을 사용하면 하나의 context만 구독할 수 있음.
+
+      - 여러 context를 구독하려면 `Context.Consumer`를 중첩하여 사용해야 함. ([참고](https://ko.reactjs.org/docs/context.html#consuming-multiple-contexts))
+
+    - `contexType`은 클래스 컴포넌트에서만 사용할 수 있음.
+
+      - 함수 컴포넌트에서는 `useContext()`를 사용함.
 
 ___
 ### React에서 Font Awesome 아이콘 사용하는 방법
