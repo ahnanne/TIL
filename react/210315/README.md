@@ -24,5 +24,7 @@ ___
 
 - 안내페이지에 나와있듯이, 우선 패키지 매니저인 npm이나 yarn을 통해 @fortawesome 패키지들을 설치한 뒤, 아이콘을 사용하려는 자바스크립트 파일에서 `FontAwesomeIcon`을 `import` 해와서 사용하면 된다. (위 링크로 들어가 보면 단계별로 자세히 안내하고 있으니 참고바람.)
 
+- 아이콘 크기 설정하는 방법 참고 ([링크](https://fontawesome.com/how-to-use/on-the-web/using-with/react#features))
+
 - Font Awesome Pro Plan(유료 아이콘 플랜) 사용자는 Pro package를 추가로 설치해야 한다.
 
