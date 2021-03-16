@@ -227,6 +227,8 @@ ___
     
     - `Context.Consumer`의 자식은 함수여야 하는데, 이 함수는 **context의 현재 값**을 **인자**로 받으며 **React 노드**를 **반환**한다. ([참고](https://ko.reactjs.org/docs/context.html#contextconsumer))
 
+    - `Sea` 컴포넌트에서 기존의 state를 어떻게 처리해야 할지가 고민이었는데, state는 그대로 냅두고 일단 디폴트값을 `null`로 설정한 Context 객체를 만든 뒤 `Context.Provider`의 `value`로 해당 state의 값을 전달해주면 된다는 것을 알게 되었다.
+
     - 위 예제 코드를 작성하다가, `Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null`라는 에러를 만났다. 구글링해보니 보통은 괄호를 `return` 키워드 다음줄에 씀으로써 발생하는 에러라고 하길래([참고](https://stackoverflow.com/questions/46741247/nothing-was-returned-from-render-this-usually-means-a-return-statement-is-missi)) `Context.Consumer`의 자식인 화살표 함수를 쓰면서 줄바꿈을 잘못했나? 하면서 한참을 그 함수만 줄을 올렸다내렸다하고 있었는데.. 문득 보니 ㅡㅡ; 아래와 같이 전체 함수에서 아예 `return` 키워드를 빼먹은 상태였다. 🤪
 
       ```js
@@ -240,7 +242,7 @@ ___
           </WeatherContext.Consumer>
       }
       ```
-      ##### `Context.Consumer`를 반드시 컴포넌트의 `return`문 안에 써줘야 한다는 것을 알았으니 됐다..ㅎㅎ ㅠ
+      - <small>`Context.Consumer`를 반드시 컴포넌트의 `return`문 안에 써줘야 한다는 것을 알았으니 됐다..ㅎㅎ ㅠ</small>
 
 - context를 사용하여 상태 관리의 복잡함을 해결할 수는 있지만, 컴포넌트를 재사용하기가 어려워진다는 단점이 있다. 따라서 보다 더 좋은 방법은 Redux와 같은 **상태 관리 시스템** 라이브러리를 활용하는 것이다.
 
