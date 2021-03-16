@@ -80,7 +80,7 @@ ___
     ```
     ```js
     // Boat.js
-    import { Component, createContext } from 'react';
+    import { Component } from 'react';
     import Captain from '../Captain/Captain';
     import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
     import { faShip } from '@fortawesome/free-solid-svg-icons';
@@ -130,14 +130,117 @@ ___
     }
     ```
 
-  - context를 사용하지 않으면 prop을 위와 같이 일일이 넘겨줘야 해서 번거로울 수 있다. 궁극적으로 prop을 전달받아야 하는 하위 컴포넌트가 깊은 곳에 있을수록 그 과정은 무척 번거로울 것이다.
+  - context를 사용하지 않으면 prop을 위와 같이 일일이 넘겨줘야 해서 번거로울 수 있다. 궁극적으로 prop을 전달받아야 하는 하위 컴포넌트가 깊은 곳에 있을수록, 즉 중첩이 깊어질수록 그 과정은 무척 번거로울 것이다.
 
   - 그럼 이제 위의 예제를 context를 사용하여 바꿔보자.
   
   - 코드
 
     ```js
+    // Sea.js
+    import { Component, createContext } from 'react';
+    import Boat from '../Boat/Boat';
+    import { sea, button, span } from './Sea.module.scss';
+
+    // context를 만들어보자!
+    export const WeatherContext = createContext(null);
+
+    export default class Sea extends Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          weather: "sunny",
+          // or "rainstorm"
+        };
+      }
+
+      changeWeather = () => {
+        this.setState((prevState) => ({
+          ...prevState,
+          weather: this.state.weather === "sunny" ? "rainstorm" : "sunny",
+        }));
+      };
+
+      render() {
+        const { weather } = this.state;
+
+        return (
+          <WeatherContext.Provider value={weather}>
+            <div className={sea}>
+              <Boat />
+            </div>
+            <button className={button} type="button" onClick={this.changeWeather}>날씨 바꾸기!</button>
+            <span className={span}>현재 날씨: {weather}</span>
+          </WeatherContext.Provider>
+        );
+      }
+    }
     ```
+    ```js
+    // Boat.js
+    import { Component } from 'react';
+    import { WeatherContext } from '../Sea/Sea';
+    import Captain from '../Captain/Captain';
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+    import { faShip } from '@fortawesome/free-solid-svg-icons';
+    // import {} from '@fortawesome/free-solid-svg-icons';
+    import styles, { boat } from './Boat.module.scss';
+
+    export default class Boat extends Component {
+      render() {
+        return (
+          <WeatherContext.Consumer>
+            {/* Context.Consumer의 자식은 함수여야 함. */}
+            {context => (
+              <div className="boat">
+                <FontAwesomeIcon
+                  className={boat}
+                  icon={faShip}
+                  size="6x"
+                />
+                <div className={styles[`${context}DayCaptain`]}>
+                  <Captain />
+                </div>
+              </div>
+            )}
+          </WeatherContext.Consumer>
+        );
+      }
+    }
+    ```
+    ```js
+    import { WeatherContext } from '../Sea/Sea';
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+    import { faUserNinja, faSwimmer } from '@fortawesome/free-solid-svg-icons';
+
+    export default function Captain() {
+      return (
+        <WeatherContext.Consumer>
+          {/* Context.Consumer의 자식은 함수여야 함. */}
+          {context => context === "sunny" ? 
+            <FontAwesomeIcon icon={faUserNinja} size="3x" /> :
+            <FontAwesomeIcon icon={faSwimmer} size="3x" />}
+        </WeatherContext.Consumer>
+      )
+    }
+    ```
+    
+    - `Context.Consumer`의 자식은 함수여야 하는데, 이 함수는 **context의 현재 값**을 **인자**로 받으며 **React 노드**를 **반환**한다. ([참고](https://ko.reactjs.org/docs/context.html#contextconsumer))
+
+    - 위 예제 코드를 작성하다가, `Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null`라는 에러를 만났다. 구글링해보니 보통은 괄호를 `return` 키워드 다음줄에 씀으로써 발생하는 에러라고 하길래([참고](https://stackoverflow.com/questions/46741247/nothing-was-returned-from-render-this-usually-means-a-return-statement-is-missi)) `Context.Consumer`의 자식인 화살표 함수를 쓰면서 줄바꿈을 잘못했나? 하면서 한참을 그 함수만 줄을 올렸다내렸다하고 있었는데.. 문득 보니 ㅡㅡ; 아래와 같이 전체 함수에서 아예 `return` 키워드를 빼먹은 상태였다. 🤪
+
+      ```js
+      // DON'T!!
+      export default function Captain() {
+          <WeatherContext.Consumer>
+            {/* Context.Consumer의 자식은 함수여야 함. */}
+            {context => context === "sunny" ? 
+              <FontAwesomeIcon icon={faUserNinja} size="3x" /> :
+              <FontAwesomeIcon icon={faSwimmer} size="3x" />}
+          </WeatherContext.Consumer>
+      }
+      ```
+      ##### `Context.Consumer`를 반드시 컴포넌트의 `return`문 안에 써줘야 한다는 것을 알았으니 됐다..ㅎㅎ ㅠ
 
 - context를 사용하여 상태 관리의 복잡함을 해결할 수는 있지만, 컴포넌트를 재사용하기가 어려워진다는 단점이 있다. 따라서 보다 더 좋은 방법은 Redux와 같은 **상태 관리 시스템** 라이브러리를 활용하는 것이다.
 
