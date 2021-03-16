@@ -41,98 +41,109 @@ ___
   
   - 코드
 
-  ```js
-  // Sea.js
-  import { Component, createContext } from 'react';
-  import Boat from '../Boat/Boat';
-  import { sea, button, span } from './Sea.module.scss';
+    ```js
+    // Sea.js
+    import { Component, createContext } from 'react';
+    import Boat from '../Boat/Boat';
+    import { sea, button, span } from './Sea.module.scss';
 
-  export default class Sea extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        weather: "sunny",
-        // or "rainstorm"
+    export default class Sea extends Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          weather: "sunny",
+          // or "rainstorm"
+        };
+      }
+
+      changeWeather = () => {
+        this.setState((prevState) => ({
+          ...prevState,
+          weather: this.state.weather === "sunny" ? "rainstorm" : "sunny",
+        }));
       };
+
+      render() {
+        const { weather } = this.state;
+
+        return (
+          <>
+            <div className={sea}>
+              <Boat weather={weather} />
+            </div>
+            <button className={button} type="button" onClick={this.changeWeather}>날씨 바꾸기!</button>
+            <span className={span}>현재 날씨: {weather}</span>
+          </>
+        );
+      }
     }
+    ```
+    ```js
+    // Boat.js
+    import { Component, createContext } from 'react';
+    import Captain from '../Captain/Captain';
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+    import { faShip } from '@fortawesome/free-solid-svg-icons';
+    // import {} from '@fortawesome/free-solid-svg-icons';
+    import styles, { boat } from './Boat.module.scss';
 
-    changeWeather = () => {
-      this.setState((prevState) => ({
-        ...prevState,
-        weather: this.state.weather === "sunny" ? "rainstorm" : "sunny",
-      }));
-    };
+    export default class Boat extends Component {
+      render() {
+        const { weather } = this.props;
 
-    render() {
-      const { weather } = this.state;
-
-      return (
-        <>
-          <div className={sea}>
-            <Boat weather={weather} />
+        return (
+          <div className="boat">
+            <FontAwesomeIcon
+              className={boat}
+              icon={faShip}
+              size="6x"
+            />
+            <div className={styles[`${weather}DayCaptain`]}>
+              <Captain weather={weather} />
+            </div>
           </div>
-          <button className={button} type="button" onClick={this.changeWeather}>날씨 바꾸기!</button>
-          <span className={span}>현재 날씨: {weather}</span>
-        </>
-      );
+        );
+      }
     }
-  }
-  ```
-  ```js
-  // Boat.js
-  import { Component, createContext } from 'react';
-  import Captain from '../Captain/Captain';
-  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-  import { faShip } from '@fortawesome/free-solid-svg-icons';
-  // import {} from '@fortawesome/free-solid-svg-icons';
-  import styles, { boat } from './Boat.module.scss';
+    ```
+    ```js
+    // Captain.js
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+    import { faUserNinja, faSwimmer } from '@fortawesome/free-solid-svg-icons';
 
-  export default class Boat extends Component {
-    render() {
-      const { weather } = this.props;
-
-      return (
-        <div className="boat">
+    export default function Captain({ weather }) {
+      if (weather === "sunny") {
+        return (
           <FontAwesomeIcon
-            className={boat}
-            icon={faShip}
-            size="6x"
+            icon={faUserNinja}
+            size="3x"
           />
-          <div className={styles[`${weather}DayCaptain`]}>
-            <Captain weather={weather} />
-          </div>
-        </div>
-      );
+        );
+      } else {
+        return (
+          <FontAwesomeIcon
+            icon={faSwimmer}
+            size="3x"
+          />
+        );
+      }
     }
-  }
-  ```
-  ```js
-  // Captain.js
-  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-  import { faUserNinja, faSwimmer } from '@fortawesome/free-solid-svg-icons';
-
-  export default function Captain({ weather }) {
-    if (weather === "sunny") {
-      return (
-        <FontAwesomeIcon
-          icon={faUserNinja}
-          size="3x"
-        />
-      );
-    } else {
-      return (
-        <FontAwesomeIcon
-          icon={faSwimmer}
-          size="3x"
-        />
-      );
-    }
-  }
-  ```
+    ```
 
   - context를 사용하지 않으면 prop을 위와 같이 일일이 넘겨줘야 해서 번거로울 수 있다. 궁극적으로 prop을 전달받아야 하는 하위 컴포넌트가 깊은 곳에 있을수록 그 과정은 무척 번거로울 것이다.
 
   - 그럼 이제 위의 예제를 context를 사용하여 바꿔보자.
+  
+  - 코드
+
+    ```js
+    ```
+
+- context를 사용하여 상태 관리의 복잡함을 해결할 수는 있지만, 컴포넌트를 재사용하기가 어려워진다는 단점이 있다. 따라서 보다 더 좋은 방법은 Redux와 같은 **상태 관리 시스템** 라이브러리를 활용하는 것이다.
+
+  - 상태 관리 시스템 : 리액트 애플리케이션의 모든 상태를 하나의 저장소(store)에서 통합적으로 관리하는 시스템
+
+  - 상태 관리 시스템 라이브러리에는 Redux, Mobx, Vuex 등이 있다.
 
 ___
 ### React에서 Font Awesome 아이콘 사용하는 방법
