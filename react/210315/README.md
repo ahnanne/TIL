@@ -15,6 +15,125 @@ ___
 > context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공할 수 있습니다.
 > context를 사용하면 중간에 있는 엘리먼트들에게 props를 넘겨주지 않아도 됩니다.
 
+- 직접 실습해보기 : **Sea 예제**
+
+  ![image](https://user-images.githubusercontent.com/54733637/111294879-20e09800-868e-11eb-99da-f7d4e9a5e4bc.png)
+
+  ```
+  [컴포넌트]
+  1. Sea - 바다
+  2. Boat - 바다를 항해하고 있는 배
+  3. Captain - 바다를 항해하고 있는 배의 선장
+
+  [상황]
+  Sea 컴포넌트는 weather이라는 상태를 지닌다.
+  weather는 "sunny" 또는 "rainstorm" 두 가지 중 하나의 값을 갖는다.
+  "날씨 바꾸기!" 버튼을 클릭하면 weather가 "sunny" 또는 "rainstorm"으로 toggle된다.
+
+  Boat 컴포넌트는 Sea 컴포넌트로부터 weather prop을 전달 받는데,
+  이 배는 weather이 "sunny"일 땐 사람을 태울 수 있고,
+  "rainstorm"일 땐 사람을 태우지 못한다..
+
+  Captain 컴포넌트는 Boat 컴포넌트로부터 또 weather prop을 전달 받는데,
+  이 선장은 weather이 "sunny"일 땐 배를 타고 갈 수 있고,
+  "rainstorm"일 땐 배를 탈 수 없어 헤엄을 쳐서 가야 한다.
+  ```
+  
+  - 코드
+
+  ```js
+  // Sea.js
+  import { Component, createContext } from 'react';
+  import Boat from '../Boat/Boat';
+  import { sea, button, span } from './Sea.module.scss';
+
+  export default class Sea extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        weather: "sunny",
+        // or "rainstorm"
+      };
+    }
+
+    changeWeather = () => {
+      this.setState((prevState) => ({
+        ...prevState,
+        weather: this.state.weather === "sunny" ? "rainstorm" : "sunny",
+      }));
+    };
+
+    render() {
+      const { weather } = this.state;
+
+      return (
+        <>
+          <div className={sea}>
+            <Boat weather={weather} />
+          </div>
+          <button className={button} type="button" onClick={this.changeWeather}>날씨 바꾸기!</button>
+          <span className={span}>현재 날씨: {weather}</span>
+        </>
+      );
+    }
+  }
+  ```
+  ```js
+  // Boat.js
+  import { Component, createContext } from 'react';
+  import Captain from '../Captain/Captain';
+  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  import { faShip } from '@fortawesome/free-solid-svg-icons';
+  // import {} from '@fortawesome/free-solid-svg-icons';
+  import styles, { boat } from './Boat.module.scss';
+
+  export default class Boat extends Component {
+    render() {
+      const { weather } = this.props;
+
+      return (
+        <div className="boat">
+          <FontAwesomeIcon
+            className={boat}
+            icon={faShip}
+            size="6x"
+          />
+          <div className={styles[`${weather}DayCaptain`]}>
+            <Captain weather={weather} />
+          </div>
+        </div>
+      );
+    }
+  }
+  ```
+  ```js
+  // Captain.js
+  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  import { faUserNinja, faSwimmer } from '@fortawesome/free-solid-svg-icons';
+
+  export default function Captain({ weather }) {
+    if (weather === "sunny") {
+      return (
+        <FontAwesomeIcon
+          icon={faUserNinja}
+          size="3x"
+        />
+      );
+    } else {
+      return (
+        <FontAwesomeIcon
+          icon={faSwimmer}
+          size="3x"
+        />
+      );
+    }
+  }
+  ```
+
+  - context를 사용하지 않으면 prop을 위와 같이 일일이 넘겨줘야 해서 번거로울 수 있다. 궁극적으로 prop을 전달받아야 하는 하위 컴포넌트가 깊은 곳에 있을수록 그 과정은 무척 번거로울 것이다.
+
+  - 그럼 이제 위의 예제를 context를 사용하여 바꿔보자.
+
 ___
 ### React에서 Font Awesome 아이콘 사용하는 방법
 
