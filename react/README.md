@@ -38,4 +38,4 @@
 
 - [21/03/15 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210315)
 
-  - `forceUpdate()`, 
+  - `forceUpdate()`, 클래스 컴포넌트와 context, `contextType`, React에서 Font Awesome 사용하기
