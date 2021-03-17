@@ -185,6 +185,17 @@ ___
   - 하지만 `shouldComponentUpdate`가 `false`를 반환하는 경우에는 `render`가 호출되지 않음.
 
 ___
+### `componentDidMount`
+
+> "Mounting" is when React "renders" the component <b>for the first time</b> and actually builds <b>the initial DOM</b> from those instructions. ([참고](https://reacttraining.com/blog/mount-vs-render/))
+
+- `componentDidMount`는 `render`가 최초로 호출된 직후에 **딱 한 번 호출**됨.
+
+  - 즉, 하나의 컴포넌트의 생명주기 내에서 단 한 번만 호출됨.
+
+- **DOM 노드**가 필요한 초기화 작업을 하기 적절한 위치이며, 외부에서 데이터를 불러와야 할 경우 **네트워크 요청**을 보내기에 적절한 위치임. ([참고](https://ko.reactjs.org/docs/react-component.html#componentdidmount))
+
+___
 ### `getSnapshotBeforeUpdate`
 
 > `getSnapshotBeforeUpdate()`는 <b>가장 마지막으로 렌더링된 결과</b>가 DOM 등에 반영되었을 때에 호출됩니다. 이 메서드를 사용하면 컴포넌트가 DOM으로부터 스크롤 위치 등과 같은 정보를 이후 변경되기 전에 얻을 수 있습니다. <b>이 생명주기가 반환하는 값은 `componentDidUpdate()`에 인자로 전달</b>됩니다. ([참고](https://ko.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate))
