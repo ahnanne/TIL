@@ -24,6 +24,24 @@ ___
     };
     ```
 
+- 다중 선택 컨트롤(`select`( > `option`s) 요소)
+
+  - HTML과 달리 React에서는 `select` 요소의 초기 값을 설정할 때 `value` 속성을 사용하여 설정함.
+
+  - HTML에서 다중 선택을 사용하려면 `select` 요소에 `multiple` 어트리뷰트를 추가하는데, React에서는 `select` 요소에 `multiple={true}`를 설정하고 `value`는 array 타입의 값(여러 값이 배열의 형태로 들어가기 때문)을 주면 됨.
+
+    - 사용자가 선택한 값들을 이벤트 핸들러로 업데이트해야 함.
+
+- controlled component와 uncontrolled component
+
+  - controlled component : React가 제어할 수 있는 컴포넌트
+
+  - uncontrolled component :  React가 제어할 수 없는 컴포넌트
+
+    - "React가 제어할 수 없다" => 사용자가 데이터를 입력하면 React에서 별도 처리 없이 요소에 바로 반영되며, 특정 필드가 특정 속성을 갖도록 강제할 수 없음. 
+
+    - uncontrolled comp의 경우 DOM 자체에서 데이터를 다루게 되는데, <u>`ref` 속성</u>을 사용하여 DOM에서 폼 값을 가져올 수 있음.
+
 ___
 ### 불변 객체
 
