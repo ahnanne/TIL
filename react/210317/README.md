@@ -25,6 +25,40 @@
 
   > 클래스 필드에 할당한 화살표 함수 내부의 `this` 또한 클래스가 생성할 인스턴스를 가리킨다. (이웅모, 모던 자바스크립트 Deep Dive(2020), p.485)
 
+- `console.log`
+
+  - 인스턴스 메서드 내부의 `this`가 가리키는 값을 확인해보려고 아래와 같이 클래스 필드에서 화살표 함수로 메서드(인스턴스 메서드)를 정의하고 콘솔창을 확인해보았다.
+
+    - 코드
+
+      ```js
+      // this binding 확인용
+      checkThisOut = function () {
+        console.log(this);
+      };
+
+      checkThisOutToo = () => {
+        console.log(this);
+      };
+      ```
+      
+    - 콘솔 출력 결과
+
+      ![image](https://user-images.githubusercontent.com/54733637/111707615-be52ec00-8887-11eb-9f04-3829cbe44f54.png)
+      
+      - 밑에 하나씩 딸려서 출력되는 `undefined`는 무엇인가 했는데, 알고보니 위 check 함수들에서 `return`문이 없어서 `undefined`가 반환되는 것이었다.
+
+  - 참고
+
+    - 명시적으로 값을 `return`하지 않는 함수를 콘솔로 찍어보면, 아래와 같이 `undefined`가 두 번 나온다.
+
+      ![image](https://user-images.githubusercontent.com/54733637/111707920-46d18c80-8888-11eb-9e54-485a5e8bd59e.png)
+      
+    - `undefined` 중 하나는 함수가 명시적으로 값을 반환하지 않아 암묵적으로 반환되는 `undefined`이며, 두 번째는 완료값(completion value)으로서의 `undefined`다.
+
+      - 완료값(completion value) : 크롬 개발자 도구에서 표현식이 아닌 문을 실행할 때 출력되는 값 (이웅모, 모던 자바스크립트 Deep Dive(2020), p.58)
+
+
 ___
 ### Form 컨트롤
 
