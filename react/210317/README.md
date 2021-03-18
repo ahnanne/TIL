@@ -24,7 +24,7 @@ ___
     };
     ```
 
-- 다중 선택 컨트롤(`select`( > `option`s) 요소)
+- 다중 선택 컨트롤(`select`, `option`)
 
   - HTML과 달리 React에서는 `select` 요소의 초기 값을 설정할 때 `value` 속성을 사용하여 설정함.
 
@@ -32,13 +32,17 @@ ___
 
     - 사용자가 선택한 값들을 이벤트 핸들러로 업데이트해야 함.
 
-- controlled component와 uncontrolled component
+- controlled component와 uncontrolled component ([참고](https://ko.reactjs.org/docs/forms.html#controlled-components))
 
   - controlled component : React가 제어할 수 있는 컴포넌트
 
+    - HTML에서는 `input`, `textarea`, `select`와 같은 폼 요소는 일반적으로 사용자의 입력을 기반으로 자신의 state를 관리하고 업데이트하지만, **React에서는 이러한 폼 요소의 state가 일반적으로 컴포넌트의 state 속성에 유지되며 `setState()`에 의해 업데이트**됨.
+
+    - 폼을 렌더링하는 React 컴포넌트는 폼에 발생하는 사용자 입력값을 제어함. => 이렇게 제외되는 폼 요소를 **controlled component(제어 컴포넌트)**라고 함.
+
   - uncontrolled component :  React가 제어할 수 없는 컴포넌트
 
-    - "React가 제어할 수 없다" => 사용자가 데이터를 입력하면 React에서 별도 처리 없이 요소에 바로 반영되며, 특정 필드가 특정 속성을 갖도록 강제할 수 없음. 
+    - "React가 제어할 수 없다" => 사용자가 데이터를 입력하면 React에서 별도 처리 없이 요소에 바로 반영되며, 특정 필드가 특정 속성을 갖도록 강제할 수 없음.
 
     - uncontrolled comp의 경우 DOM 자체에서 데이터를 다루게 되는데, <u>`ref` 속성</u>을 사용하여 DOM에서 폼 값을 가져올 수 있음.
 
