@@ -38,7 +38,7 @@ ___
 
     - HTML에서는 `input`, `textarea`, `select`와 같은 폼 요소는 일반적으로 사용자의 입력을 기반으로 자신의 state를 관리하고 업데이트하지만, **React에서는 이러한 폼 요소의 state가 일반적으로 컴포넌트의 state 속성에 유지되며 `setState()`에 의해 업데이트**됨.
 
-    - 폼을 렌더링하는 React 컴포넌트는 폼에 발생하는 사용자 입력값을 제어함. => 이렇게 제외되는 폼 요소를 **controlled component(제어 컴포넌트)**라고 함.
+    - 폼을 렌더링하는 React 컴포넌트는 폼에 발생하는 사용자 입력값을 제어함. => 이렇게 제외되는 폼 요소를 <b>controlled component(제어 컴포넌트)</b>라고 함.
 
   - uncontrolled component :  React가 제어할 수 없는 컴포넌트
 
