@@ -42,6 +42,8 @@ ___
 
 - 클래스 컴포넌트에서는 `React.createRef()`를 통해 Ref 객체를 생성하고, 함수 컴포넌트에서는 `useRef()`를 통해 Ref 객체를 생성함.
 
+  ![image](https://user-images.githubusercontent.com/54733637/111910553-2fbbb600-8aa5-11eb-85d5-77d21dfe8902.png)
+
   - 이렇게 생성된 Ref 객체는 `current`라는 프로퍼티를 가지며, `ref` 어트리뷰트를 통해 리액트 엘리먼트에 부착됨.
 
 - Ref 객체가 부착된 리액트 엘리먼트 → 이 노드에 대한 참조는 `current` 프로퍼티에 담기게 됨.
@@ -53,6 +55,8 @@ ___
   - Ref 객체가 **①HTML 엘리먼트**에 부착될 경우 → 해당 엘리먼트로 생성된 DOM 엘리먼트에 대한 참조가 Ref 객체의 `current` 프로퍼티 값이 됨.
 
   - Ref 객체가 **②클래스 컴포넌트**에 부착될 경우 → 해당 클래스 컴포넌트 출신의, 마운트된 인스턴스에 대한 참조가 Ref 객체의 `current` 프로퍼티 값이 됨.
+
+![image](https://user-images.githubusercontent.com/54733637/111910731-ecae1280-8aa5-11eb-8b59-d73d686104d5.png)
 
 ___
 ### 불변 객체
