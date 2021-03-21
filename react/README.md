@@ -39,3 +39,11 @@
 - [21/03/15 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210315)
 
   - `forceUpdate()`, 클래스 컴포넌트와 context, `contextType`, React에서 Font Awesome 사용하기
+
+- [21/03/17 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210317)
+
+  - 클래스 컴포넌트의 `this` 바인딩, Form 컨트롤(controlled component, uncontrolled component)
+
+- [21/03/21 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210321)
+
+  - `useRef()`, `current` 프로퍼티, ref, 지연된 초기화(lazy initialization), `useEffect()` 등
