@@ -59,16 +59,6 @@ ___
 ![image](https://user-images.githubusercontent.com/54733637/111910731-ecae1280-8aa5-11eb-8b59-d73d686104d5.png)
 
 ___
-### 불변 객체
-
-- 정리 예정..(https://yamoo9.gitbook.io/learning-react-app/learning-history/props-vs-state#immutable-and-set-state, https://ko.wikipedia.org/wiki/%EB%B6%88%EB%B3%80%EA%B0%9D%EC%B2%B4)
-
-___
-### Immer
-
-- 정리 예정..(https://medium.com/@wongni/%EC%9D%B4%EB%A8%B8-immer-%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%B4-%EB%B6%88%EB%B3%80%EC%84%B1-%EC%89%BD%EA%B2%8C-%ED%95%98%EC%9E%90-24b00b6ff13f)
-
-___
 ### 기타
 
 - Hook 사용 시 주의할 점

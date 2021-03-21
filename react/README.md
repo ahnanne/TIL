@@ -47,3 +47,7 @@
 - [21/03/21 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210321)
 
   - `useRef()`, `current` 프로퍼티, ref, 지연된 초기화(lazy initialization), `useEffect()` 등
+
+- [21/03/22 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210322)
+
+  - 엘리먼트 렌더링, 컴포넌트, 
