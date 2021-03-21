@@ -121,13 +121,3 @@ ___
     - "React가 제어할 수 없다" => 사용자가 데이터를 입력하면 React에서 별도 처리 없이 요소에 바로 반영되며, 특정 필드가 특정 속성을 갖도록 강제할 수 없음. 
 
     - uncontrolled comp의 경우 DOM 자체에서 데이터를 다루게 되는데, <i>`ref` 속성</i>을 사용하여 DOM에서 폼 값을 가져올 수 있음.
-
-___
-### 불변 객체
-
-- 정리 예정..(https://yamoo9.gitbook.io/learning-react-app/learning-history/props-vs-state#immutable-and-set-state, https://ko.wikipedia.org/wiki/%EB%B6%88%EB%B3%80%EA%B0%9D%EC%B2%B4)
-
-___
-### Immer
-
-- 정리 예정..(https://medium.com/@wongni/%EC%9D%B4%EB%A8%B8-immer-%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%B4-%EB%B6%88%EB%B3%80%EC%84%B1-%EC%89%BD%EA%B2%8C-%ED%95%98%EC%9E%90-24b00b6ff13f)
