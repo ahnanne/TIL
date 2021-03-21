@@ -18,6 +18,43 @@
   - 참조 대상을 변경해야 할 경우 `current` 프로퍼티의 값을 변경하면 된다.
 
 ___
+### ref
+
+- 이하의 내용은 리액트 공식 문서의 설명을 참고하였음. ([링크](https://ko.reactjs.org/docs/refs-and-the-dom.html))
+
+> Ref는 render 메서드에서 생성된 DOM 노드나 React 엘리먼트에 접근하는 방법을 제공합니다.
+
+- Ref 사용 사례
+
+  - **바람직한 경우**
+
+    - 포커스, 텍스트 선택 영역, 미디어 재생 등을 관리할 때
+
+    - 애니메이션을 직접적으로 실행시킬 때
+
+    - 3rd party DOM library를 리액트와 함께 사용할 때
+
+  - **바람직하지 않은 경우**
+
+    - 선언적으로 해결될 수 있는 문제에 대해서는 사용 지양
+
+      - ex) `Dialog` 컴포넌트(모달)를 열고 닫을 때는 `open()`, `close()` 메서드를 두는 대신, `isOpen`이라는 prop을 넘겨주는 게 좋음.
+
+- 클래스 컴포넌트에서는 `React.createRef()`를 통해 Ref 객체를 생성하고, 함수 컴포넌트에서는 `useRef()`를 통해 Ref 객체를 생성함.
+
+  - 이렇게 생성된 Ref 객체는 `current`라는 프로퍼티를 가지며, `ref` 어트리뷰트를 통해 리액트 엘리먼트에 부착됨.
+
+- Ref 객체가 부착된 리액트 엘리먼트 → 이 노드에 대한 참조는 `current` 프로퍼티에 담기게 됨.
+
+  - **이때!!!** Ref 객체를 부착할 수 있는(=`ref` 어트리뷰트를 설정할 수 있는) 리액트 엘리먼트는 **①HTML 엘리먼트** 또는 **②클래스 컴포넌트**임.
+
+    - **함수 컴포넌트는 <u>인스턴스가 없으므로</u>, 함수 컴포넌트에는 `ref` 어트리뷰트를 사용할 수 없음.**
+
+  - Ref 객체가 **①HTML 엘리먼트**에 부착될 경우 → 해당 엘리먼트로 생성된 DOM 엘리먼트에 대한 참조가 Ref 객체의 `current` 프로퍼티 값이 됨.
+
+  - Ref 객체가 **②클래스 컴포넌트**에 부착될 경우 → 해당 클래스 컴포넌트 출신의, 마운트된 인스턴스에 대한 참조가 Ref 객체의 `current` 프로퍼티 값이 됨.
+
+___
 ### 불변 객체
 
 - 정리 예정..(https://yamoo9.gitbook.io/learning-react-app/learning-history/props-vs-state#immutable-and-set-state, https://ko.wikipedia.org/wiki/%EB%B6%88%EB%B3%80%EA%B0%9D%EC%B2%B4)
