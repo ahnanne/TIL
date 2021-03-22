@@ -42,4 +42,4 @@ ___
 ___
 ### 컴포넌트
 
-- 
+- 정리 예정..(https://ko.reactjs.org/docs/components-and-props.html)
