@@ -1,12 +1,34 @@
 # 21/03/22 학습 내용
-### 불변 객체
 
-- 정리 예정..(https://yamoo9.gitbook.io/learning-react-app/learning-history/props-vs-state#immutable-and-set-state, https://ko.wikipedia.org/wiki/%EB%B6%88%EB%B3%80%EA%B0%9D%EC%B2%B4)
+### Immer(immer.js) 라이브러리
 
-___
-### Immer
+- 리듀서를 작성할 때 immer를 사용하면, 현재 상태에 상대적으로 가할 변경에 대해서만 고려하면 되기 때문에 리듀서를 보다 더 간단히 작성할 수 있음. ([참고](https://medium.com/@wongni/%EC%9D%B4%EB%A8%B8-immer-%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%B4-%EB%B6%88%EB%B3%80%EC%84%B1-%EC%89%BD%EA%B2%8C-%ED%95%98%EC%9E%90-24b00b6ff13f))
 
-- 정리 예정..(https://medium.com/@wongni/%EC%9D%B4%EB%A8%B8-immer-%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%B4-%EB%B6%88%EB%B3%80%EC%84%B1-%EC%89%BD%EA%B2%8C-%ED%95%98%EC%9E%90-24b00b6ff13f)
+  - 즉, immer를 사용하면 불변성을 지키는 코드를 비교적 쉽고 간단하게 작성할 수 있음.
+
+- 리액트는 기본적으로 얕은 비교를 해서 리렌더링을 하므로, 참조 타입(객체, 배열)의 참조값이 바뀌었는지 여부를 판단하지 그 내부의 차이까지는 확인하지 않음. 따라서 리액트에서 코드를 작성할 땐 객체 내부에만 변화를 주는 방식(ex - mutator method)으로는 원하는 결과를 얻을 수 없음.([참고](https://kyounghwan01.github.io/blog/React/immer-js/#immer-js))
+
+  - 하지만 immer를 사용하면, 변경을 줄 부분에 대한 코드만 작성하면 되고 상태 자체의 재할당은 고려하지 않아도 되기 때문에 코드 작성이 편리해짐.
+
+    - redux에서 immer 쓰기 예제 ([링크](https://kyounghwan01.github.io/blog/React/immer-js/#redux%EC%97%90%EC%84%9C-immer-%EC%93%B0%EA%B8%B0))
+
+- 사용 방법 ([참고](https://medium.com/@wongni/%EC%9D%B4%EB%A8%B8-immer-%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%B4-%EB%B6%88%EB%B3%80%EC%84%B1-%EC%89%BD%EA%B2%8C-%ED%95%98%EC%9E%90-24b00b6ff13f))
+
+  ```js
+  import produce from "immer";
+
+  const nextState = produce(currentState, draft => {
+    // currentState에 대해 가할 변경
+  });
+  ```
+
+    - produce 함수는 <b>첫 번째 인자</b>로는 수정하려는 상태(현재 상태), <b>두 번째 인자</b>로는 producer 함수(현재 상태를 변경하는 함수)를 전달함.
+
+      - producer 함수는 인자로 <b>draft</b>를 전달 받는데, 이는 "현재 상태의 proxy"임.
+
+      - producer 함수는 <u>아무것도 반환하지 않음</u>.
+
+      - draft에 가해지는 수정은 다음 상태(위 코드에서 `nextState`)를 만들어 내는 데 사용됨. 만약 producer 함수가 아무것도 수정하지 않으면 `nextState`와 `currentState`는 동일함. 즉, 참조값이 같음.
 
 ___
 ### 엘리먼트 렌더링
@@ -39,7 +61,3 @@ ___
     ReactDOM.render(element, document.getElementById('root'));
     ```
 
-___
-### 컴포넌트
-
-- 정리 예정..(https://ko.reactjs.org/docs/components-and-props.html)
