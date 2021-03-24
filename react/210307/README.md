@@ -137,11 +137,11 @@ ___
   const [state, dispatch] = useReducer(reducer, initialArg, init);
   ```
 
-  - 첫 번째 인수로 전달되는 reducer는 콜백 함수로, `(state, action) => newState`의 형태임.
+  - **첫 번째 인수(필수)**로 전달되는 reducer는 콜백 함수로, `(state, action) => newState`의 형태임.
 
-  - 두 번째 인수로는 state의 초기값으로 설정할 값을 전달할 수 있음. (옵션)
+  - **두 번째 인수(옵션)**로는 state의 초기값으로 설정할 값을 전달할 수 있음.
 
-  - *세 번째 인수로는 초기화 지연을 위한 함수를 전달할 수 있음.* (옵션)
+  - **세 번째 인수(옵션)**로는 초기화 지연을 위한 함수를 전달할 수 있음.
 
     - 참고 : https://ko.reactjs.org/docs/hooks-reference.html#lazy-initialization
 
