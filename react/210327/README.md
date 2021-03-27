@@ -32,6 +32,8 @@ ___
     console.log(res);
     // I like pink and caffe latte!
     ```
+    
+    ![image](https://user-images.githubusercontent.com/54733637/112719971-2c11ae80-8f3f-11eb-8945-83379a2d323d.png)
 
   - 이러한 tagged template literal을 가장 많이 사용하는 상황이 바로 styled-components 라이브러리를 사용할 때임. styled-components에서 tagged template literal은 상위 컴포넌트로부터 전달되는 props를 읽기 위해 활용됨.
 
