@@ -53,7 +53,7 @@ ___
 
   2. `info` : 어떤 컴포넌트가 에러를 발생 시켰는지에 대한 정보(`componentStack` 프로퍼티)를 갖고 있는 객체
 
-    - `info.componentStack`은 에러 로그 기록을 위해 사용할 수 있음.
+      - `info.componentStack`은 에러 로그 기록을 위해 사용할 수 있음.
 
 - Sentry
 
