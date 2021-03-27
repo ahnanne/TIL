@@ -198,13 +198,17 @@ ___
 ___
 ### `getSnapshotBeforeUpdate`
 
-> `getSnapshotBeforeUpdate()`는 <b>가장 마지막으로 렌더링된 결과</b>가 DOM 등에 반영되었을 때에 호출됩니다. 이 메서드를 사용하면 컴포넌트가 DOM으로부터 스크롤 위치 등과 같은 정보를 이후 변경되기 전에 얻을 수 있습니다. <b>이 생명주기가 반환하는 값은 `componentDidUpdate()`에 인자로 전달</b>됩니다. ([참고](https://ko.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate))
+> `getSnapshotBeforeUpdate()`는 <b>가장 마지막으로 렌더링된 결과</b>가 DOM에 반영되고 (브라우저에 반영되기 직전에!) 호출됩니다. 이 메서드를 사용하면 컴포넌트가 DOM으로부터 스크롤 위치 등과 같은 정보를 이후 변경되기 전에 얻을 수 있습니다. <b>이 생명주기가 반환하는 값은 `componentDidUpdate()`에 인자로 전달</b>됩니다. ([참고](https://ko.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate))
+
+- `getSnapshotBeforeUpdate`는 렌더링된 결과가 브라우저에 반영되기 직전에 호출되는데, 이때 DOM에 접근할 수 있음.
 
 - 활용 예 : 채팅 화면 - 스크롤 위치를 처리하는 작업이 필요한 UI
 
 - `getSnapshotBeforeUpdate`는 ①스냅샷 값 또는 ②`null`을 반환함.
 
   - 스냅샷 값이란, `getSnapshotBeforeUpdate`가 반환한 값을 의미함.
+
+  - 여기서 반환된 스냅샷 값은 이 바로 다음에 호출되는 `componentDidUpdate`에서 받아볼 수 있음. (`componentDidUpdate`의 세 번째 인자로 전달됨.)
 
 ___
 ### `componentDidUpdate`
