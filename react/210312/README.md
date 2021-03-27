@@ -267,3 +267,8 @@ ___
 4. `getSnapshotBeforeUpdate`
 
 5. `componentDidUpdate`
+
+___
+### Life Cycle Methods 예시 코드 참고
+
+👀 [바로가기](https://codesandbox.io/s/currying-bash-mrkjb?fontsize=14&file=/src/LifeCycleSample.js)

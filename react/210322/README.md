@@ -10,6 +10,8 @@
 
   - 하지만 immer를 사용하면, 변경을 줄 부분에 대한 코드만 작성하면 되고 상태 자체의 재할당은 고려하지 않아도 되기 때문에 코드 작성이 편리해짐.
 
+  - 다시 말해, immer를 사용하면 불변성을 해치는 코드를 작성해도 immer가 대신해서 불변성을 유지해줌!
+
     - redux에서 immer 쓰기 예제 ([링크](https://kyounghwan01.github.io/blog/React/immer-js/#redux%EC%97%90%EC%84%9C-immer-%EC%93%B0%EA%B8%B0))
 
 - 사용 방법 ([참고](https://medium.com/@wongni/%EC%9D%B4%EB%A8%B8-immer-%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%B4-%EB%B6%88%EB%B3%80%EC%84%B1-%EC%89%BD%EA%B2%8C-%ED%95%98%EC%9E%90-24b00b6ff13f))
@@ -19,6 +21,8 @@
 
   const nextState = produce(currentState, draft => {
     // currentState에 대해 가할 변경
+    // 주의할 점! 이 안에서는 currentState가 아니라
+    // draft를 참조해야 함.
   });
   ```
 
