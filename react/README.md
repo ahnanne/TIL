@@ -54,6 +54,9 @@
 
 - [21/03/26 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210326)
 
-  - `useReducer`, 고차 컴포넌트(HOC), styled-components
+  - `useReducer`, `componentDidCatch(error, info)`
+  
+- [21/03/27 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210327)
 
+  - 고차 컴포넌트(HOC), styled-components
 
