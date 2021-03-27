@@ -80,4 +80,14 @@ ___
 
       - 전자는 4개의 인수를 전부 다 받는 반면, 후자는 첫 번째 인수로 색상 값, 두 번째 인수로 알파 값 이렇게 두 가지만 받으므로 투명도를 설정하기가 더 편리함.
 
-- [polished](https://polished.js.org/docs/)를 사용하면 이와 같은 Sass 내장 함수들을 사용할 수 있음.
+- [polished](https://polished.js.org/docs/)를 사용하면 이와 같은 Sass 내장 함수들을 쓸 수 있음.
+
+  - 예제([출처](https://john015.netlify.app/polished-js%EB%A1%9C-js%EC%97%90%EC%84%9C-css%EB%A5%BC-%EC%9E%91%EC%84%B1%ED%95%A0-%EB%95%8C-sass-style-functions-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0))
+
+    ```js
+    // styled-components에서 사용
+    const div = styled.div`
+      background: ${adjustHue(180, '#448')};
+      background: ${adjustHue('180', 'rgba(101,100,205,0.7)')};
+    `
+    ```
