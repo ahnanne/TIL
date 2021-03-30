@@ -6,7 +6,21 @@
 
   - Firebase SDK 인증(Auth), 데이터베이스(Cloud Firestore), 스토리지(Storage) 등의 서비스를 제공하여, 간단한 웹 애플리케이션을 만들 때 유용함.
 
-- Firebase에서 커스텀 클레임 및 보안 규칙으로 액세스 제어하기([참고](https://firebase.google.com/docs/auth/admin/custom-claims?hl=ko))
+- Firebase에서 커스텀 클레임 및 보안 규칙으로 액세스 제어하기([참고1](https://firebase.google.com/docs/auth/admin/custom-claims?hl=ko), [참고2](https://youtu.be/3hj_r_N0qMs))
+
+  > 이 기능을 사용하면 사용자를 그룹화하여 권한을 다르게 부여할 수 있다. (ex - 구독 서비스를 이용하지 않는 일반 회원과 구독 서비스를 이용하는 유료 회원)
+
+  - email/pw로 로그인하든, GitHub나 Google 계정으로 로그인하든, 결국 <b>Firebase ID token</b>을 발급 받는다. 여기에 커스텀 클레임을 추가할 수 있음.
+
+    - 권한과 관련한 내용이 아닌, 해당 사용자에 대한 기타 정보는 Firebase ID token 내에 추가하지 말고 Cloud Fire Store 등의 DB에 저장할 것!
+
+  - 커스텀 클레임
+
+    - 커스텀 클레임이란 해당 사용자의 <b>권한</b>에 대한 key와 value의 쌍으로, 서버 단에서 설정할 수 있음.
+
+    - 커스텀 클레임은 1000 바이트로 제한되어 있음.
+
+    - (영상 강의 4분부터 시청하고 정리하기~)
 
 ___
 ### Focus Trapping for Accessibility (A11Y)

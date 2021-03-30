@@ -10,6 +10,8 @@
 
 - `<NavLink>`는 `<Link>`의 특별한 버전으로서, 현재 URL과 `to`의 목적지가 일치할 경우 스타일링을 부여함.
 
+  - `acitveClassName`을 주고 `activeStyle`을 직접 주거나, 모듈 CSS를 사용하여 해당 `acitveClassName`에 스타일링하면 됨.
+
 ___
 ### ``
 
