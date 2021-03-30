@@ -1,10 +1,5 @@
 # 21/03/27 학습 내용
 
-### 고차 컴포넌트(HOC)
-
-- 
-
-___
 ### styled-components
 
 - styled-components는 CSS in JS 라이브러리 중 하나임.
