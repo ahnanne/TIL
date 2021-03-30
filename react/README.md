@@ -58,5 +58,5 @@
 
 #### [21/03/27 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210327)
 
-  - 고차 컴포넌트(HOC), styled-components, tagged template literal 문법, Sass 내장 함수, polished
+  - styled-components, tagged template literal 문법, Sass 내장 함수, polished
 
