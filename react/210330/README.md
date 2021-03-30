@@ -6,6 +6,8 @@
 
   - Firebase SDK 인증(Auth), 데이터베이스(Cloud Firestore), 스토리지(Storage) 등의 서비스를 제공하여, 간단한 웹 애플리케이션을 만들 때 유용함.
 
+- Firebase에서 커스텀 클레임 및 보안 규칙으로 액세스 제어하기([참고](https://firebase.google.com/docs/auth/admin/custom-claims?hl=ko))
+
 ___
 ### Focus Trapping for Accessibility (A11Y)
 
