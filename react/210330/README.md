@@ -2,7 +2,9 @@
 
 ### Firebase
 
-- 
+- Firebase 사용 이점
+
+  - Firebase SDK 인증(Auth), 데이터베이스(Cloud Firestore), 스토리지(Storage) 등의 서비스를 제공하여, 간단한 웹 애플리케이션을 만들 때 유용함.
 
 ___
 ### Focus Trapping for Accessibility (A11Y)
@@ -21,7 +23,9 @@ ___
 
   3. 다이얼로그가 계속 떠있는 상태에서는 `tab` 키를 계속 눌러도 포커스가 다이얼로그 바깥으로 나가면 안되고, 다이얼로그 안쪽의 interactable 요소들 사이에서 순환(loop)해야 한다.
 
-    - `tab` 키를 누를 때는 물론이고, `shift` + `tab` 키를 누를 때도 마찬가지
+      - `tab` 키를 누를 때는 물론이고, `shift` + `tab` 키를 누를 때도 마찬가지
+
+      - `focusableNodeList = dialogNode.querySelectorAll( interactable 요소들 나열 );`
 
   4. 모바일 환경에서도 정상적으로 작동되려면, 다이얼로그가 열릴 때 다이얼로그 바깥의 모든 요소들에 `aria-hidden=true`를 지정해줘야 한다.
 
