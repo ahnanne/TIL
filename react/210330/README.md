@@ -12,6 +12,8 @@
 
   - email/pw로 로그인하든, GitHub나 Google 계정으로 로그인하든, 결국 <b>Firebase ID token</b>을 발급 받는다. 여기에 커스텀 클레임을 추가할 수 있음.
 
+    ![image](https://user-images.githubusercontent.com/54733637/113069341-116b5e00-91fb-11eb-81f7-a4a10d2dcbbe.png)
+
     - 권한과 관련한 내용이 아닌, 해당 사용자에 대한 기타 정보는 Firebase ID token 내에 추가하지 말고 Cloud Fire Store 등의 DB에 저장할 것!
 
   - 커스텀 클레임
