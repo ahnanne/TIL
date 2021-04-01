@@ -24,6 +24,12 @@
 
     - 예를 들어, 글쓰기 권한에 대한 커스텀 클레임은 코드를 뜯어봐도 어차피 Firebase ID token에 글쓰기 권한이 없는 이상 글을 쓰지 못하니까 상관없음.
 
+- Firebase 용어 정리
+
+  - 스냅샷(snapshot)
+
+    - 스냅샷은 단일 시점에 특정 데이터베이스 참조에 있던 데이터를 촬영한 사진이라고 생각하면 됨. ([공식 문서](https://firebase.google.com/docs/database/admin/retrieve-data#section-start))
+
 ___
 ### Focus Trapping for Accessibility (A11Y)
 
