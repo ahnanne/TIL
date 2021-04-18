@@ -1,4 +1,3 @@
-
 # React
 ## 📌목차
 ### 각 항목 클릭하여 바로가기
@@ -71,3 +70,7 @@
 #### [21/04/04 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210404)
 
   - Redux Persist 라이브러리
+
+#### [21/04/06 학습내용](https://github.com/ahnanne/TIL/tree/main/react/210406)
+
+  - Redux, Redux의 3가지 규칙
